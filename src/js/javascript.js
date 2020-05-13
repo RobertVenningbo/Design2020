@@ -22,8 +22,8 @@ function filePreview(input) {
         img.src = reader.result;
         img.width = 300;*/
         duplicate();
+        var imageContainer = document.getElementById("duplicater" + i);
         i++;
-        var imageContainer = document.getElementById("duplicater" + (i - 1));
         var img = imageContainer.querySelector("img");
         img.src = reader.result;
         resolve(e.target.result);
