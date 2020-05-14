@@ -131,6 +131,5 @@ textarea.onkeyup = function() {
     }    
    textarea.value = lines.slice(0, limit).join("\n");
 };
- ev.currentTarget.replaceChild (span, spanTgt);
- spanParent.appendChild (spanTgt);
+
 
