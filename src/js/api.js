@@ -9,8 +9,6 @@ async function changeTheme(clicked_id) {
     document.getElementById("card-title").style["font-family"] = "Helvetica";
   }
   if(clicked_id == "1") {
-    console.log(json.themes[0].id);
-    console.log(json.themes[0].styles['secondaryColor']);
     document.getElementById("pic-title").style["font-name"] = json.themes[0].styles['fontName'];
     document.getElementById("pic-title").style["font-family"] = json.themes[0].styles['fontFamily'];
     document.getElementById("title").style["font-family"] = json.themes[0].styles['fontFamily'];
@@ -20,7 +18,6 @@ async function changeTheme(clicked_id) {
     document.getElementById("upload_btn").classList.remove('blue');
   }
   if(clicked_id == "2") {
-    console.log(json.themes[1].id);
     document.getElementById("pic-title").style["font-name"] = json.themes[1].styles['fontName'];
     document.getElementById("pic-title").style["font-family"] = json.themes[1].styles['fontFamily'];
     document.getElementById("title").style["font-family"] = json.themes[1].styles['fontFamily'];
@@ -30,7 +27,6 @@ async function changeTheme(clicked_id) {
     document.getElementById("upload_btn").classList.remove('blue');
   }
   if(clicked_id == "3") {
-    console.log(json.themes[2].id);
     document.getElementById("pic-title").style["font-name"] = json.themes[2].styles['fontName'];
     document.getElementById("pic-title").style["font-family"] = json.themes[2].styles['fontFamily'];
     document.getElementById("title").style["font-family"] = json.themes[2].styles['fontFamily'];
