@@ -6,7 +6,7 @@ async function changeTheme(clicked_id) {
     document.getElementById("nav").classList.add('indigo');
     document.getElementById("upload_btn").classList.add('blue');
     document.getElementById("title").style["font-family"] = "Helvetica";
-    document.getElementById("card-title").style["font-family"] = "Helvetica";
+    document.getElementById("pic-title").style["font-family"] = "Helvetica";
   }
   if(clicked_id == "1") {
     document.getElementById("pic-title").style["font-name"] = json.themes[0].styles['fontName'];
