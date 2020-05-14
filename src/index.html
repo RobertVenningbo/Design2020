@@ -40,7 +40,7 @@
       />
     </div>
 
-    <ul id='dropdown1' class='dropdown-content'>
+    <ul id='dropdown-big' class='dropdown-content'>
       <li><a id="0" href="#!" onclick="changeTheme(this.id)">Default</a></li>
       <li class="divider" tabindex="-1"></li>
       <li><a id="1" href="#!" onclick="changeTheme(this.id)">Children</a></li>
@@ -48,8 +48,27 @@
       <li><a id="2" href="#!" onclick="changeTheme(this.id)">Travel</a></li>
       <li class="divider" tabindex="-1"></li>
       <li id="3"><a id="3" href="#!" onclick="changeTheme(this.id)">Formal</a></li>
-      
     </ul>
+
+    <ul id='dropdown-phone' class='dropdown-content'>
+      <li><a id="0" href="#!" onclick="changeTheme(this.id)">Default</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li><a id="1" href="#!" onclick="changeTheme(this.id)">Children</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li><a id="2" href="#!" onclick="changeTheme(this.id)">Travel</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li id="3"><a id="3" href="#!" onclick="changeTheme(this.id)">Formal</a></li>
+    </ul>
+    
+    <div class="container">
+      <ul class="sidenav" id="mobile-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a class='dropdown-trigger no-shadow' href='#' data-target='dropdown-phone'>Temaer</a></li>
+
+      </ul>
+    </div>
 
     <nav class="nav-wrapper indigo darken-2" id="nav">
       <div class="container">
@@ -61,16 +80,11 @@
           <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Help</a></li>
-          <li><a class='dropdown-trigger btn no-shadow' href='#' data-target='dropdown1'>Temaer</a></li>
+          <li><a class='dropdown-trigger btn no-shadow' href='#' data-target='dropdown-big'>Temaer</a></li>
         </ul>
       </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Help</a></li>
-    </ul>
 
     <!-- container -->
     <div class="container">
