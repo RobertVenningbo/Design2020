@@ -26,11 +26,8 @@ function chooseFile() {
   document.getElementById("fileInput").click();
 }
 
-function filePreview(input) {
-  return new Promise((resolve, reject) => {
-    if (input.files && input.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
+function filePreview(imgSRC) { 
+  
         /*var img = document.getElementById("imagePreview");
         img.src = reader.result;
         img.width = 300;*/
@@ -38,20 +35,91 @@ function filePreview(input) {
         var imageContainer = document.getElementById("duplicater" + i);
         i++;
         var img = imageContainer.querySelector("img");
-        img.src = reader.result;
-        resolve(e.target.result);
-      };
-      reader.onerror = () => {
-        reject();
-      };
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      reject();
-    }
-  });
+        img.src = imgSRC;
 }
 
-/*function filePreview() {
+function uploadePressed(){
+  var img = canvas.toDataURL("image/png");
+  filePreview(img);
+}
+
+var canvas = new fabric.Canvas('C');
+
+
+        function setBackgroundImage(input){
+          
+          document.getElementById("pictureText").value = "";
+          canvas.clear();
+          return new Promise((resolve, reject) => {
+            if (input.files && input.files[0]) {
+              const reader = new FileReader();
+              reader.onload = (e) => {          
+                fabric.Image.fromURL(reader.result, function (img) {   
+                var imgHeight = img.height;
+                var imgWidth = img.width;
+                if (imgHeight > imgWidth){
+                  img.scaleToHeight(canvas.height);
+                  canvas.scaleX = canvas.width / img.width;
+                  console.log("det var højde")
+                } else {
+                  img.scaleToWidth(canvas.width);
+                  console.log("det var bredde")
+                }   
+                canvas.setBackgroundImage(img);
+                canvas.requestRenderAll();
+                document.getElementById("modalTriggerButton").click();
+                
+                /*img.scaleX = canvas.width / img.width;
+                img.scaleY = canvas.height / img.height;*/
+            });
+                resolve(e.target.result);
+              };
+              reader.onerror = () => {
+                reject();
+              };
+              reader.readAsDataURL(input.files[0]);
+            } else {
+              reject();
+            }
+          });
+            
+        }
+
+        function removeObject(){
+          canvas.remove(canvas.getActiveObject());
+        }/*
+
+        window.onresize = (event) => {
+          fitResponsiveCanvas();
+       };
+      
+      function fitResponsiveCanvas() {
+         // canvas dimensions
+         let canvasSize = {
+            width: 600,
+            height: 400
+         };
+         // canvas container dimensions
+         let containerSize = {
+            width: document.getElementById('canvasContainer').offsetWidth,
+            height: document.getElementById('canvasContainer').offsetHeight
+         };
+         let scaleRatio = Math.min(containerSize.width / canvasSize.width, containerSize.height / canvasSize.height);
+         canvas.setWidth(containerSize.width);         
+      }*/
+
+
+        function Addtext() {
+          var text = document.getElementById("pictureText").value;
+          canvas.add(new fabric.IText(text, {
+              left: 100,
+              top: 100,
+              fontSize: 35
+          }));
+          document.getElementById("pictureText").value = "";
+      }
+
+function filePreviewfake() {
   var oFReader = new FileReader();
   oFReader.readAsDataURL(document.getElementById("image-input").files[0]);
 
@@ -59,7 +127,7 @@ function filePreview(input) {
       document.getElementById("imageId").src = oFREvent.target.result;
   };
 }
-*/
+
 
 function duplicate() {
   var original = document.getElementById("duplicater" + i);
