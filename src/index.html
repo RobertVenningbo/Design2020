@@ -2,6 +2,12 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/waltograph" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/nimbus-sans-l" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/carlito" type="text/css"/>
+
+
     <!--Import Google Icon Font-->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -32,8 +38,19 @@
         onchange="filePreview(fileInput)"
       />
     </div>
-    <!-- navigation -->
-    <nav class="nav-wrapper indigo darken-2">
+
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a id="0" href="#!" onclick="changeTheme(this.id)">Default</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li><a id="1" href="#!" onclick="changeTheme(this.id)">Children</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li><a id="2" href="#!" onclick="changeTheme(this.id)">Travel</a></li>
+      <li class="divider" tabindex="-1"></li>
+      <li id="3"><a id="3" href="#!" onclick="changeTheme(this.id)">Formal</a></li>
+      
+    </ul>
+
+    <nav class="nav-wrapper indigo darken-2" id="nav">
       <div class="container">
         <a href="#" class="brand-logo center">Fotobog</a>
         <a href="#" class="sidenav-trigger left" data-target="mobile-links">
@@ -43,6 +60,7 @@
           <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Help</a></li>
+          <li><a class='dropdown-trigger btn no-shadow' href='#' data-target='dropdown1'>Temaer</a></li>
         </ul>
       </div>
     </nav>
@@ -56,11 +74,9 @@
     <!-- container -->
     <div class="container">
       <div class="center">
-        <h2>Din fotobog</h2>
-        <a
-          class="btn-large blue darken-1 waves-effect waves-ripple waves-indigo btn modal-trigger"
-          href="#modal1"
-        >
+      <h2 id="title">Din fotobog</h2>
+     
+        <a id="upload_btn" href="#modal1" class="btn-large blue darken-1">
           <span>Upload photo</span>
           <i class="material-icons right">photo</i>
         </a>
