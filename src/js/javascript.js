@@ -4,7 +4,7 @@
 */
 var i = 0;
 
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll(".sidenav");
   var instances = M.Sidenav.init(elems);
 });
@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll(".modal");
   var instances = M.Modal.init(elems);
 });
+*/
+M.AutoInit();
 
 function chooseFile() {
   document.getElementById("fileInput").click();
@@ -55,11 +57,11 @@ function filePreview(input) {
 
 function duplicate() {
   var original = document.getElementById("duplicater" + i);
-  var clone = original.cloneNode(true); // "deep" clone 
-  clone.querySelector("span").innerText = ("happy boiii" + i); //DETTE ER EN TEST
+  var clone = original.cloneNode(true); // "deep" clone
+  clone.querySelector("span").innerText = "happy boiii" + i; //DETTE ER EN TEST
   clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
-  clone.querySelector("img").id = ("drag" + (i+1)); 
-  
+  clone.querySelector("img").id = "drag" + (i + 1);
+
   //let child = clone.querySelector("img");
   //child.addEventListener("click", chooseFile());
   //onclick = chooseFile(); // event handlers are not cloned
@@ -67,27 +69,26 @@ function duplicate() {
   original.parentNode.appendChild(clone);
 }
 
-function allowDrop (ev) {
-  ev.preventDefault ();
+function allowDrop(ev) {
+  ev.preventDefault();
 }
 
-function drag (ev) {
- ev.dataTransfer.setData ("src", ev.target.id);
+function drag(ev) {
+  ev.dataTransfer.setData("src", ev.target.id);
 }
 
-function drop (ev) {
- ev.preventDefault ();
- var src = document.getElementById (ev.dataTransfer.getData ("src"));
- var srcParent = src.parentNode;
- var tgt = ev.currentTarget.firstElementChild;
+function drop(ev) {
+  ev.preventDefault();
+  var src = document.getElementById(ev.dataTransfer.getData("src"));
+  var srcParent = src.parentNode;
+  var tgt = ev.currentTarget.firstElementChild;
 
+  var span = document.getElementById(ev.dataTransfer.getData("span")); //virker ikke
+  var spanParent = src.parentNode; //virker ikke
+  var spanTgt = ev.currentTarget.firstElementChild; //virker ikke
+  ev.currentTarget.replaceChild(src, tgt); //virker ikke
+  srcParent.appendChild(tgt); //virker ikke
 
- var span = document.getElementById (ev.dataTransfer.getData ("span"));//virker ikke  
- var spanParent = src.parentNode;                                      //virker ikke
- var spanTgt = ev.currentTarget.firstElementChild;                     //virker ikke 
- ev.currentTarget.replaceChild (src, tgt);                             //virker ikke  
- srcParent.appendChild (tgt);                                          //virker ikke
-
- ev.currentTarget.replaceChild (span, spanTgt);
- spanParent.appendChild (spanTgt);
+  ev.currentTarget.replaceChild(span, spanTgt);
+  spanParent.appendChild(spanTgt);
 }
