@@ -55,11 +55,39 @@ function filePreview(input) {
 
 function duplicate() {
   var original = document.getElementById("duplicater" + i);
-  var clone = original.cloneNode(true); // "deep" clone
+  var clone = original.cloneNode(true); // "deep" clone 
+  clone.querySelector("span").innerText = ("happy boiii" + i); //DETTE ER EN TEST
   clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
+  clone.querySelector("img").id = ("drag" + (i+1)); 
+  
   //let child = clone.querySelector("img");
   //child.addEventListener("click", chooseFile());
   //onclick = chooseFile(); // event handlers are not cloned
 
   original.parentNode.appendChild(clone);
+}
+
+function allowDrop (ev) {
+  ev.preventDefault ();
+}
+
+function drag (ev) {
+ ev.dataTransfer.setData ("src", ev.target.id);
+}
+
+function drop (ev) {
+ ev.preventDefault ();
+ var src = document.getElementById (ev.dataTransfer.getData ("src"));
+ var srcParent = src.parentNode;
+ var tgt = ev.currentTarget.firstElementChild;
+
+
+ var span = document.getElementById (ev.dataTransfer.getData ("span"));//virker ikke  
+ var spanParent = src.parentNode;                                      //virker ikke
+ var spanTgt = ev.currentTarget.firstElementChild;                     //virker ikke 
+ ev.currentTarget.replaceChild (src, tgt);                             //virker ikke  
+ srcParent.appendChild (tgt);                                          //virker ikke
+
+ ev.currentTarget.replaceChild (span, spanTgt);
+ spanParent.appendChild (spanTgt);
 }
