@@ -52,8 +52,8 @@ function duplicate() {
   var original = document.getElementById("duplicater" + i);
   var clone = original.cloneNode(true); // "deep" clone
   clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
-  let child = clone.querySelector("img");
-  child.addEventListener("click", chooseFile());
+  //let child = clone.querySelector("img");
+  //child.addEventListener("click", chooseFile());
   //onclick = chooseFile(); // event handlers are not cloned
 
   original.parentNode.appendChild(clone);
