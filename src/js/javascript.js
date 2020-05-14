@@ -133,16 +133,7 @@ textarea.onkeyup = function() {
 };
  ev.currentTarget.replaceChild (span, spanTgt);
  spanParent.appendChild (spanTgt);
-
-
-const api_url = 'https://itu-sdbg-s2020.now.sh/api/themes';
-async function getTheme() {
-  const response = await fetch(api_url);
-  const json = await response.json();
-  console.log(json.themes[0].id);
-  console.log(json);
-}
-getTheme();
+})
 
 const api = 'https://itu-sdbg-s2020.now.sh/api/themes';
 async function changeTheme(clicked_id) {
