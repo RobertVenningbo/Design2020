@@ -83,12 +83,13 @@ function drop(ev) {
   var srcParent = src.parentNode;
   var tgt = ev.currentTarget.firstElementChild;
 
-  var span = document.getElementById(ev.dataTransfer.getData("span")); //virker ikke
-  var spanParent = src.parentNode; //virker ikke
-  var spanTgt = ev.currentTarget.firstElementChild; //virker ikke
-  ev.currentTarget.replaceChild(src, tgt); //virker ikke
-  srcParent.appendChild(tgt); //virker ikke
+  const first = src.parentNode.parentNode.children.item(1);
+  const last = ev.currentTarget.parentNode.children.item(1);
+  const firstClone = first.cloneNode(true);
+  const lastClone = last.cloneNode(true);
 
-  ev.currentTarget.replaceChild(span, spanTgt);
-  spanParent.appendChild(spanTgt);
+  ev.currentTarget.replaceChild(src, tgt);
+  srcParent.appendChild(tgt);
+  last.replaceWith(firstClone);
+  first.replaceWith(lastClone);
 }
