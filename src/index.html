@@ -29,9 +29,10 @@
         multiple="false"
         id="fileInput"
         name="fileInput"
-        onchange="filePreview(fileInput);"
+        onchange="filePreview(fileInput)"
       />
     </div>
+    <!-- navigation -->
     <nav class="nav-wrapper indigo darken-2">
       <div class="container">
         <a href="#" class="brand-logo center">Fotobog</a>
@@ -52,16 +53,41 @@
       <li><a href="#">Help</a></li>
     </ul>
 
+    <!-- container -->
     <div class="container">
       <h2 class="center">Din fotobog</h2>
       <div class="center">
-        <a href="" class="btn-large blue darken-1">
+        <a
+          class="btn-large blue darken-1 waves-effect waves-ripple waves-indigo btn modal-trigger"
+          href="#modal1"
+        >
           <span>Upload photo</span>
           <i class="material-icons right">photo</i>
         </a>
       </div>
+
+      <!-- image modal -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Edit photo</h4>
+          <div class="container">
+            <img
+              class="responsive-img"
+              src="https://www.thorupstrandøst.dk/wp-content/uploads/placeholder-image.jpg"
+              alt=""
+            />
+          </div>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+            >Agree</a
+          >
+        </div>
+      </div>
+
       <div class="row">
-        <div class="col s12 m6 l4" id="duplicater0">
+        <div class="col s12 m6 l3" id="duplicater0">
           <div class="card medium">
             <!-- size er meget vigtig eller fucker alt -->
             <div class="card-image">
@@ -72,7 +98,11 @@
               />
             </div>
             <div class="card-content">
-              <span class="card-title">Happy fucking boy</span>
+              <textarea
+                id="textarea1"
+                class="card-title materialize-textarea"
+              ></textarea>
+              <label for="textarea1">Textarea</label>
               <p>This guy fucks</p>
             </div>
           </div>
