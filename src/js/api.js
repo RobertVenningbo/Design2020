@@ -10,7 +10,6 @@ async function changeTheme(clicked_id) {
         document.getElementsByClassName("card-title")[i].style["font-name"] = "Helvetica";
         document.getElementsByClassName("card-title")[i].style["font-family"] = "Helvetica";
     }
-    console.log(document.getElementsByClassName("card-title"));
   }
   if(clicked_id == "1") {
     for(var i = 0; i < document.getElementsByClassName("card-title").length; i++) {
