@@ -58,7 +58,7 @@ function filePreview(input) {
 function duplicate() {
   var original = document.getElementById("duplicater" + i);
   var clone = original.cloneNode(true); // "deep" clone
-  clone.querySelector("span").innerText = "happy boiii" + i; //DETTE ER EN TEST
+ 
   clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + (i + 1);
 
@@ -93,3 +93,35 @@ function drop(ev) {
   last.replaceWith(firstClone);
   first.replaceWith(lastClone);
 }
+
+
+var limit = 2; // <---max no of lines you want in textarea
+var textarea = document.getElementById("imageDesc");
+var spaces = textarea.getAttribute("cols");
+
+textarea.onkeyup = function() {
+   var lines = textarea.value.split("\n");
+
+   for (var i = 0; i < lines.length; i++) 
+   {
+         if (lines[i].length <= spaces) continue;
+         var j = 0;
+
+        var space = spaces;
+
+        while (j++ <= spaces) 
+        {
+           if (lines[i].charAt(j) === " ") space = j;  
+        }
+    lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");
+    lines[i] = lines[i].substring(0, space);
+  }
+    if(lines.length>limit)
+    {
+        textarea.style.color = 'red';
+        setTimeout(function(){
+            textarea.style.color = '';
+        },500);
+    }    
+   textarea.value = lines.slice(0, limit).join("\n");
+};

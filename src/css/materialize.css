@@ -6066,6 +6066,7 @@ textarea.materialize-textarea {
   resize: none;
   min-height: 3rem;
   box-sizing: border-box;
+  
 }
 
 .hiddendiv {
@@ -8090,6 +8091,10 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem;
   }
+}
+
+.noborder {
+  border:none!important;
 }
 
 /*# sourceMappingURL=materialize.css.map */
