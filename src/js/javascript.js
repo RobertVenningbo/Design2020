@@ -146,6 +146,7 @@ window.onresize = (event) => {
     fitResponsiveCanvas();
     scalePictureToWidth(currentImage);
   }
+  this.document.getElementById("pictureText").style.width= this.document.getElementById("C").style.width;
 };
 
 function fitResponsiveCanvas() {
@@ -263,6 +264,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
 
 function drop(ev) {
   ev.preventDefault();
