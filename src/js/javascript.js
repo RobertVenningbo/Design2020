@@ -105,13 +105,17 @@ function removeObject(){
 function toggleDrawOnCanvas(){
   if(canvas.isDrawingMode == true){
     canvas.isDrawingMode = false;
+    document.getElementById("drawOnCanvasButton").style.backgroundColor = "#81939D";
   } else {
     canvas.isDrawingMode = true;
+    document.getElementById("drawOnCanvasButton").style.backgroundColor = "#64727a";
     canvas.freeDrawingBrush.width = 3;
   }
 }
 
 document.getElementById("colorInput").onchange = (event) =>{
+  
+  document.getElementById("colorButton").style.color = document.getElementById("colorInput").value;
   canvas.freeDrawingBrush.color = document.getElementById("colorInput").value;
 }
 
