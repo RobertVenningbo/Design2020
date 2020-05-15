@@ -3,8 +3,8 @@ async function changeTheme(clicked_id) {
   const response = await fetch(api);
   const json = await response.json();
   if(clicked_id == "0") {
-    document.getElementById("nav").classList.add('indigo');
-    document.getElementById("upload_btn").classList.add('blue');
+    document.getElementById("nav").style.backgroundColor = "#0FA3B1";
+    document.getElementById("upload_btn").style.backgroundColor = "#81939D";
     document.getElementById("title").style["font-family"] = "Helvetica";
     for(var i = 0; i < document.getElementsByClassName("card-title").length; i++) {
         document.getElementsByClassName("card-title")[i].style["font-name"] = "Helvetica";
