@@ -99,7 +99,7 @@
     <div class="center">
       <h2 id="title">Your photobook</h2>
       <h6 class="botMargin">This is your photobook. This is the place where you can add your favourite photos, give them a personal description and see them all in a collection.</h6>
-      <a id="upload_btn" href="#" class="btn-large botMargin" style="background-color: #81939D;" onclick="chooseFile()">
+      <a id="upload_btn" href="#" class="btn-large botMargin hide-on-med-and-down" style="background-color: #81939D;" onclick="chooseFile()">
         <span>Upload photo</span>
         <i class="material-icons right">photo</i>
       </a>
@@ -253,6 +253,10 @@
   <script type="text/javascript" src="js/bin/materialize.min.js"></script>
   <script type="text/javascript" src="js/javascript.js"></script>
   <script type="text/javascript" src="js/api.js"></script>
-
+  <div class="fixed-action-btn right hide-on-large-only">
+    <a href="" class="btn-floating btn-large" style="background-color: #81939D" onclick="chooseFile()">
+    <i class="material-icons">add</i>
+    </a>
+  </div>
 </body>
 </html>
