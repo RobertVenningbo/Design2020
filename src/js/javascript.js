@@ -210,8 +210,6 @@ function duplicate() {
   clone.children[0].children[1].children[0].id = ("imageDesc" +i);             //så de ikke har samme id
   clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + (i + 1);
-  original.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
-  original.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
   //let child = clone.querySelector("img");
   //child.addEventListener("click", chooseFile());
   //onclick = chooseFile(); // event handlers are not cloned
