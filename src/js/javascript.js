@@ -26,31 +26,108 @@ function chooseFile() {
   document.getElementById("fileInput").click();
 }
 
-function filePreview(input) {
-  return new Promise((resolve, reject) => {
-    if (input.files && input.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        /*var img = document.getElementById("imagePreview");
-        img.src = reader.result;
-        img.width = 300;*/
-        duplicate();
-        var imageContainer = document.getElementById("duplicater" + i);
-        i++;
-        var img = imageContainer.querySelector("img");
-        img.src = reader.result;
-        console.log(img.src);
-        resolve(e.target.result);
-      };
-      reader.onerror = () => {
-        reject();
-      };
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      reject();
-    }
-  });
+function filePreview(imgSRC) { 
+  
+  /*var img = document.getElementById("imagePreview");
+  img.src = reader.result;
+  img.width = 300;*/
+  duplicate();
+  var imageContainer = document.getElementById("duplicater" + i);
+  i++;
+  var img = imageContainer.querySelector("img");
+  img.src = imgSRC;
 }
+
+function uploadePressed(){
+var img = canvas.toDataURL("image/png");
+filePreview(img);
+}
+
+var canvas = new fabric.Canvas('C');
+
+var detHerErEnTest;
+
+        function setBackgroundImage(input){
+          canvas.setWidth(500);
+          canvas.setHeight(500);
+          document.getElementById("pictureText").value = "";
+          canvas.clear();
+          return new Promise((resolve, reject) => {
+            if (input.files && input.files[0]) {
+              const reader = new FileReader();
+              reader.onload = (e) => {          
+                fabric.Image.fromURL(reader.result, function (img) {   
+                var imgHeight = img.height;
+                var imgWidth = img.width;
+                if (imgHeight > imgWidth){
+                  img.scaleToHeight(canvas.height);
+                  var scaleX = canvas.height / img.height;
+                  canvas.setWidth(img.width*scaleX);
+                } else {
+                  img.scaleToWidth(canvas.width);
+                  var scaleY = canvas.width / img.width;
+                  canvas.setHeight(img.height*scaleY);
+                }   
+                canvas.setBackgroundImage(img);
+                canvas.requestRenderAll();
+                document.getElementById("modalTriggerButton").click();
+                
+            });
+                resolve(e.target.result);
+              };
+              reader.onerror = () => {
+                reject();
+              };
+              reader.readAsDataURL(input.files[0]);
+            } else {
+              reject();
+            }
+          });
+            
+        }
+
+        function removeObject(){
+          canvas.remove(canvas.getActiveObject());
+        }
+        
+        function toggleDrawOnCanvas(){
+          if(canvas.isDrawingMode == true){
+            canvas.isDrawingMode = false;
+          } else {
+            canvas.isDrawingMode = true;
+          }
+        }
+        /*
+        
+        window.onresize = (event) => {
+          fitResponsiveCanvas();
+       };
+      
+      function fitResponsiveCanvas() {
+         // canvas dimensions
+         let canvasSize = {
+            width: 600,
+            height: 400
+         };
+         // canvas container dimensions
+         let containerSize = {
+            width: document.getElementById('canvasContainer').offsetWidth,
+            height: document.getElementById('canvasContainer').offsetHeight
+         };
+         let scaleRatio = Math.min(containerSize.width / canvasSize.width, containerSize.height / canvasSize.height);
+         canvas.setWidth(containerSize.width);         
+      }*/
+
+
+        function Addtext() {
+          var text = document.getElementById("pictureText").value;
+          canvas.add(new fabric.IText(text, {
+              left: 100,
+              top: 100,
+              fontSize: 35
+          }));
+          document.getElementById("pictureText").value = "";
+      }
 
 /*function filePreview() {
   var oFReader = new FileReader();
