@@ -109,12 +109,18 @@ function toggleDrawOnCanvas(){
     canvas.isDrawingMode = false;
   } else {
     canvas.isDrawingMode = true;
+    canvas.freeDrawingBrush.width = 3;
   }
+}
+
+document.getElementById("colorInput").onchange = (event) =>{
+  canvas.freeDrawingBrush.color = document.getElementById("colorInput").value;
 }
 
  /***********************************************\ 
 | Mangler at skrive hvor resize er taget fra     |
 \***********************************************/ 
+
 
 
 window.onresize = (event) => {
