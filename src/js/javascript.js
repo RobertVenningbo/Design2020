@@ -172,8 +172,8 @@ function duplicate() {
   clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
   clone.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
 
-  clone.children[0].children[1].children[1].children[0].id = ("imageDesc"+" "+ "disabled"); //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
-  clone.children[0].children[1].children[0].id = ("imageDesc"+" "+ "disabled");             //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
+  clone.children[0].children[1].children[1].children[0].id = ("imageDesc"+ i); //så de ikke har samme id
+  clone.children[0].children[1].children[0].id = ("imageDesc" +i);             //så de ikke har samme id
   clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + (i + 1);
   original.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
