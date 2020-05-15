@@ -45,89 +45,112 @@ filePreview(img);
 
 var canvas = new fabric.Canvas('C');
 
-var detHerErEnTest;
-
-        function setBackgroundImage(input){
-          canvas.setWidth(500);
-          canvas.setHeight(500);
-          document.getElementById("pictureText").value = "";
-          canvas.clear();
-          return new Promise((resolve, reject) => {
-            if (input.files && input.files[0]) {
-              const reader = new FileReader();
-              reader.onload = (e) => {          
-                fabric.Image.fromURL(reader.result, function (img) {   
-                var imgHeight = img.height;
-                var imgWidth = img.width;
-                if (imgHeight > imgWidth){
-                  img.scaleToHeight(canvas.height);
-                  var scaleX = canvas.height / img.height;
-                  canvas.setWidth(img.width*scaleX);
-                } else {
-                  img.scaleToWidth(canvas.width);
-                  var scaleY = canvas.width / img.width;
-                  canvas.setHeight(img.height*scaleY);
-                }   
-                canvas.setBackgroundImage(img);
-                canvas.requestRenderAll();
-                document.getElementById("modalTriggerButton").click();
-                
-            });
-                resolve(e.target.result);
-              };
-              reader.onerror = () => {
-                reject();
-              };
-              reader.readAsDataURL(input.files[0]);
-            } else {
-              reject();
-            }
-          });
-            
-        }
-
-        function removeObject(){
-          canvas.remove(canvas.getActiveObject());
-        }
+function setBackgroundImage(input){
+  canvas.setWidth(500);
+  canvas.setHeight(500);
+  document.getElementById("pictureText").value = "";
+  canvas.clear();
+  return new Promise((resolve, reject) => {
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {          
+        fabric.Image.fromURL(reader.result, function (img) {   
+        var imgHeight = img.height;
+        var imgWidth = img.width;
+        if (imgHeight > imgWidth){
+          img.scaleToHeight(canvas.height);
+          var scaleX = canvas.height / img.height;
+          canvas.setWidth(img.width*scaleX);
+        } else {
+          img.scaleToWidth(canvas.width);
+          var scaleY = canvas.width / img.width;
+          canvas.setHeight(img.height*scaleY);
+        }   
+        canvas.setBackgroundImage(img);
+        canvas.requestRenderAll();
+        document.getElementById("modalTriggerButton").click();
         
-        function toggleDrawOnCanvas(){
-          if(canvas.isDrawingMode == true){
-            canvas.isDrawingMode = false;
-          } else {
-            canvas.isDrawingMode = true;
-          }
-        }
-        /*
-        
-        window.onresize = (event) => {
-          fitResponsiveCanvas();
-       };
-      
-      function fitResponsiveCanvas() {
-         // canvas dimensions
-         let canvasSize = {
-            width: 600,
-            height: 400
-         };
-         // canvas container dimensions
-         let containerSize = {
-            width: document.getElementById('canvasContainer').offsetWidth,
-            height: document.getElementById('canvasContainer').offsetHeight
-         };
-         let scaleRatio = Math.min(containerSize.width / canvasSize.width, containerSize.height / canvasSize.height);
-         canvas.setWidth(containerSize.width);         
-      }*/
+    });
+        resolve(e.target.result);
+      };
+      reader.onerror = () => {
+        reject();
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      reject();
+    }
+  });
+    
+}
+
+function removeObject(){
+  canvas.remove(canvas.getActiveObject());
+}
+
+function toggleDrawOnCanvas(){
+  if(canvas.isDrawingMode == true){
+    canvas.isDrawingMode = false;
+  } else {
+    canvas.isDrawingMode = true;
+  }
+}
+/*
+
+window.onresize = (event) => {
+  fitResponsiveCanvas();
+};
+
+function fitResponsiveCanvas() {
+  // canvas dimensions
+  let canvasSize = {
+    width: 600,
+    height: 400
+  };
+  // canvas container dimensions
+  let containerSize = {
+    width: document.getElementById('canvasContainer').offsetWidth,
+    height: document.getElementById('canvasContainer').offsetHeight
+  };
+  let scaleRatio = Math.min(containerSize.width / canvasSize.width, containerSize.height / canvasSize.height);
+  canvas.setWidth(containerSize.width);         
+}*/
 
 
-        function Addtext() {
-          var text = document.getElementById("pictureText").value;
-          canvas.add(new fabric.IText(text, {
-              left: 100,
-              top: 100,
-              fontSize: 35
-          }));
-          document.getElementById("pictureText").value = "";
-      }
+function Addtext() {
+  var text = document.getElementById("pictureText").value;
+  canvas.add(new fabric.IText(text, {
+      left: 100,
+      top: 100,
+      fontSize: 35
+  }));
+  document.getElementById("pictureText").value = "";
+}
+
+
+canvas.on('object:added',function(){
+  if(!isRedoing){
+    h = [];
+  }
+  isRedoing = false;
+});
+
+var isRedoing = false;
+var h = [];
+function undo(){
+  if(canvas._objects.length>0){
+   h.push(canvas._objects.pop());
+   canvas.renderAll();
+  }
+}
+function redo(){
+  
+  if(h.length>0){
+    isRedoing = true;
+   canvas.add(h.pop());
+  }
+}
+
 
 /*function filePreview() {
   var oFReader = new FileReader();
