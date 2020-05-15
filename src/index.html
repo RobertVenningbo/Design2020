@@ -29,7 +29,7 @@
   <title>Fotobog</title>
 </head>
 
-<body>
+<body style="background-color: #F4EDEA;">
   <!--Invisible submit button :)-->
   <div style="height: 0px; overflow: hidden;">
     <input 
@@ -72,14 +72,14 @@
       <li><a href="#">Home</a></li>
       <li><a href="#modalAbout" class="modal-trigger">About</a></li>
       <li><a href="#modalHelp" class="modal-trigger">Help</a></li>
-      <li><a class='dropdown-trigger no-shadow' href='#' data-target='dropdown-phone'>Temaer</a></li>
+      <li><a class='dropdown-trigger no-shadow' href='#' data-target='dropdown-phone'>Themes</a></li>
 
     </ul>
   </div>
 
-  <nav class="nav-wrapper indigo darken-2" id="nav">
+  <nav class="nav-wrapper" style="background-color: #0FA3B1;" id="nav">
     <div class="container">
-      <a href="#" class="brand-logo center">Fotobog</a>
+      <a href="#" class="brand-logo center">Photobook</a>
       <a href="#" class="sidenav-trigger left" data-target="mobile-links">
         <i class="material-icons">menu</i>
       </a>
@@ -87,7 +87,7 @@
         <li><a href="#">Home</a></li>
         <li><a href="#modalAbout" class="modal-trigger">About</a></li>
         <li><a href="#modalHelp" class="modal-trigger">Help</a></li>
-        <li><a class='dropdown-trigger btn no-shadow' href='#' data-target='dropdown-big'>Temaer</a></li>
+        <li><a class='dropdown-trigger btn no-shadow' href='#' data-target='dropdown-big'>Themes</a></li>
       </ul>
     </div>
   </nav>
@@ -96,8 +96,9 @@
   <!-- container -->
   <div class="container">
     <div class="center">
-      <h2 id="title">Din fotobog</h2>
-      <a id="upload_btn" href="#" class="btn-large blue darken-1" onclick="chooseFile()">
+      <h2 id="title">Your photobook</h2>
+      <h6>This is your photobook. This is the place where you can add your favourite photos, give them a personal description and see them all in a collection.</h6>
+      <a id="upload_btn" href="#" class="btn-large" style="background-color: #81939D;" onclick="chooseFile()">
         <span>Upload photo</span>
         <i class="material-icons right">photo</i>
       </a>
@@ -205,8 +206,8 @@
     </div>
 
     <div class="row">
-      <div class="col s12 m6 l4" id="duplicater0">
-        <div class="card medium hoverable">
+      <div class="col s12 m6 l3" id="duplicater0">
+        <div class="card medium hoverable" style="background-color: #f7f7f7;">
           <!-- size er meget vigtig eller fucker alt -->
           <div
             class="card-image"
@@ -219,7 +220,6 @@
               ondragstart="drag(event)"
               src="https://img.icons8.com/carbon-copy/100/000000/add.png"
               alt=""
-              onclick="chooseFile()"
             />
           </div>
           <div class="card-content" id="text-div" name="text-div">

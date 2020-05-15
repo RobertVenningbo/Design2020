@@ -26,8 +26,7 @@ function chooseFile() {
   document.getElementById("fileInput").click();
 }
 
-function filePreview(imgSRC) { 
-  
+function filePreview(imgSRC) {   
   /*var img = document.getElementById("imagePreview");
   img.src = reader.result;
   img.width = 300;*/
@@ -85,10 +84,9 @@ function setBackgroundImage(input){
       reject();
     }
   });
-    
 }
 
-function scalePictureToWidth(img){
+function scalePictureToWidth(img) {
   img.scaleToWidth(canvas.width);
   var scaleY = canvas.width / img.width;
   canvas.setHeight(img.height*scaleY);
@@ -143,7 +141,6 @@ function fitResponsiveCanvas() {
   canvas.setWidth(containerSize.width);         
 }
 
-
 function Addtext() {
   var text = document.getElementById("pictureText").value;
   canvas.add(new fabric.IText(text, {
@@ -168,7 +165,6 @@ document.getElementById("pictureText").addEventListener("keyup", function(event)
 | Taken from https://codepen.io/Jadev/pen/mLNzmB |
 \***********************************************/ 
 
-
 canvas.on('object:added',function(){
   if(!isRedoing){
     h = [];
@@ -178,20 +174,20 @@ canvas.on('object:added',function(){
 
 var isRedoing = false;
 var h = [];
+
 function undo(){
   if(canvas._objects.length>0){
    h.push(canvas._objects.pop());
    canvas.renderAll();
   }
 }
-function redo(){
-  
-  if(h.length>0){
+
+function redo(){  
+  if (h.length > 0) {
     isRedoing = true;
    canvas.add(h.pop());
   }
 }
-
 
 /*function filePreview() {
   var oFReader = new FileReader();
@@ -204,10 +200,7 @@ function redo(){
 */
 
 function duplicate() {
-  var original = document.getElementById("duplicater" + i);
- 
-  
-
+  var original = document.getElementById("duplicater" + i); 
 
   var clone = original.cloneNode(true); // "deep" clone
   clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
@@ -224,8 +217,6 @@ function duplicate() {
   //onclick = chooseFile(); // event handlers are not cloned
 
   original.parentNode.appendChild(clone);
-  
-
 }
 
 function allowDrop(ev) {
