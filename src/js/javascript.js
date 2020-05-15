@@ -47,7 +47,8 @@ var canvas = new fabric.Canvas('C');
 
 
         function setBackgroundImage(input){
-          
+          canvas.setWidth(500);
+          canvas.setHeight(500);
           document.getElementById("pictureText").value = "";
           canvas.clear();
           return new Promise((resolve, reject) => {
@@ -59,18 +60,17 @@ var canvas = new fabric.Canvas('C');
                 var imgWidth = img.width;
                 if (imgHeight > imgWidth){
                   img.scaleToHeight(canvas.height);
-                  canvas.scaleX = canvas.width / img.width;
-                  console.log("det var højde")
+                  var scaleX = canvas.height / img.height;
+                  canvas.setWidth(img.width*scaleX);
                 } else {
                   img.scaleToWidth(canvas.width);
-                  console.log("det var bredde")
+                  var scaleY = canvas.width / img.width;
+                  canvas.setHeight(img.height*scaleY);
                 }   
                 canvas.setBackgroundImage(img);
                 canvas.requestRenderAll();
                 document.getElementById("modalTriggerButton").click();
                 
-                /*img.scaleX = canvas.width / img.width;
-                img.scaleY = canvas.height / img.height;*/
             });
                 resolve(e.target.result);
               };
@@ -87,8 +87,17 @@ var canvas = new fabric.Canvas('C');
 
         function removeObject(){
           canvas.remove(canvas.getActiveObject());
-        }/*
-
+        }
+        
+        function toggleDrawOnCanvas(){
+          if(canvas.isDrawingMode == true){
+            canvas.isDrawingMode = false;
+          } else {
+            canvas.isDrawingMode = true;
+          }
+        }
+        /*
+        
         window.onresize = (event) => {
           fitResponsiveCanvas();
        };
