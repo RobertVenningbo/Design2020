@@ -26,8 +26,7 @@ function chooseFile() {
   document.getElementById("fileInput").click();
 }
 
-function filePreview(imgSRC) { 
-  
+function filePreview(imgSRC) {
   /*var img = document.getElementById("imagePreview");
   img.src = reader.result;
   img.width = 300;*/
@@ -38,14 +37,14 @@ function filePreview(imgSRC) {
   img.src = imgSRC;
 }
 
-function uploadePressed(){
-var img = canvas.toDataURL("image/png");
-filePreview(img);
+function uploadePressed() {
+  var img = canvas.toDataURL("image/png");
+  filePreview(img);
 }
 
-var canvas = new fabric.Canvas('C');
+var canvas = new fabric.Canvas("C");
 
-function setBackgroundImage(input){
+function setBackgroundImage(input) {
   canvas.setWidth(500);
   canvas.setHeight(500);
   document.getElementById("pictureText").value = "";
@@ -53,24 +52,23 @@ function setBackgroundImage(input){
   return new Promise((resolve, reject) => {
     if (input.files && input.files[0]) {
       const reader = new FileReader();
-      reader.onload = (e) => {          
-        fabric.Image.fromURL(reader.result, function (img) {   
-        var imgHeight = img.height;
-        var imgWidth = img.width;
-        if (imgHeight > imgWidth){
-          img.scaleToHeight(canvas.height);
-          var scaleX = canvas.height / img.height;
-          canvas.setWidth(img.width*scaleX);
-        } else {
-          img.scaleToWidth(canvas.width);
-          var scaleY = canvas.width / img.width;
-          canvas.setHeight(img.height*scaleY);
-        }   
-        canvas.setBackgroundImage(img);
-        canvas.requestRenderAll();
-        document.getElementById("modalTriggerButton").click();
-        
-    });
+      reader.onload = (e) => {
+        fabric.Image.fromURL(reader.result, function (img) {
+          var imgHeight = img.height;
+          var imgWidth = img.width;
+          if (imgHeight > imgWidth) {
+            img.scaleToHeight(canvas.height);
+            var scaleX = canvas.height / img.height;
+            canvas.setWidth(img.width * scaleX);
+          } else {
+            img.scaleToWidth(canvas.width);
+            var scaleY = canvas.width / img.width;
+            canvas.setHeight(img.height * scaleY);
+          }
+          canvas.setBackgroundImage(img);
+          canvas.requestRenderAll();
+          document.getElementById("modalTriggerButton").click();
+        });
         resolve(e.target.result);
       };
       reader.onerror = () => {
@@ -81,15 +79,14 @@ function setBackgroundImage(input){
       reject();
     }
   });
-    
 }
 
-function removeObject(){
+function removeObject() {
   canvas.remove(canvas.getActiveObject());
 }
 
-function toggleDrawOnCanvas(){
-  if(canvas.isDrawingMode == true){
+function toggleDrawOnCanvas() {
+  if (canvas.isDrawingMode == true) {
     canvas.isDrawingMode = false;
   } else {
     canvas.isDrawingMode = true;
@@ -116,20 +113,20 @@ function fitResponsiveCanvas() {
   canvas.setWidth(containerSize.width);         
 }*/
 
-
 function Addtext() {
   var text = document.getElementById("pictureText").value;
-  canvas.add(new fabric.IText(text, {
+  canvas.add(
+    new fabric.IText(text, {
       left: 100,
       top: 100,
-      fontSize: 35
-  }));
+      fontSize: 35,
+    })
+  );
   document.getElementById("pictureText").value = "";
 }
 
-
-canvas.on('object:added',function(){
-  if(!isRedoing){
+canvas.on("object:added", function () {
+  if (!isRedoing) {
     h = [];
   }
   isRedoing = false;
@@ -137,20 +134,18 @@ canvas.on('object:added',function(){
 
 var isRedoing = false;
 var h = [];
-function undo(){
-  if(canvas._objects.length>0){
-   h.push(canvas._objects.pop());
-   canvas.renderAll();
+function undo() {
+  if (canvas._objects.length > 0) {
+    h.push(canvas._objects.pop());
+    canvas.renderAll();
   }
 }
-function redo(){
-  
-  if(h.length>0){
+function redo() {
+  if (h.length > 0) {
     isRedoing = true;
-   canvas.add(h.pop());
+    canvas.add(h.pop());
   }
 }
-
 
 /*function filePreview() {
   var oFReader = new FileReader();
@@ -164,27 +159,26 @@ function redo(){
 
 function duplicate() {
   var original = document.getElementById("duplicater" + i);
- 
-  
 
+  if (i < 1) {
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
+    clone.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
 
-  var clone = original.cloneNode(true); // "deep" clone
-  clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
-  clone.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
+    clone.children[0].children[1].children[1].children[0].id =
+      "imageDesc" + " " + "disabled"; //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
+    clone.children[0].children[1].children[0].id =
+      "imageDesc" + " " + "disabled"; //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
+    clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
+    clone.querySelector("img").id = "drag" + (i + 1);
+    original.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
+    original.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
+    //let child = clone.querySelector("img");
+    //child.addEventListener("click", chooseFile());
+    //onclick = chooseFile(); // event handlers are not cloned
 
-  clone.children[0].children[1].children[1].children[0].id = ("imageDesc"+" "+ "disabled"); //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
-  clone.children[0].children[1].children[0].id = ("imageDesc"+" "+ "disabled");             //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
-  clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
-  clone.querySelector("img").id = "drag" + (i + 1);
-  original.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
-  original.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
-  //let child = clone.querySelector("img");
-  //child.addEventListener("click", chooseFile());
-  //onclick = chooseFile(); // event handlers are not cloned
-
-  original.parentNode.appendChild(clone);
-  
-
+    original.parentNode.appendChild(clone);
+  }
 }
 
 function allowDrop(ev) {
@@ -203,7 +197,7 @@ function drop(ev) {
 
   const first = src.parentNode.parentNode.children.item(1);
   const last = ev.currentTarget.parentNode.children.item(1);
-  
+
   const firstClone = first.cloneNode(true);
   const lastClone = last.cloneNode(true);
 
@@ -213,34 +207,31 @@ function drop(ev) {
   first.replaceWith(lastClone);
 }
 
-
 var limit = 2; // <---max no of lines you want in textarea
 var textarea = document.getElementById("imageDesc");
 var spaces = textarea.getAttribute("cols");
 
-textarea.onkeyup = function() { // https://stackoverflow.com/questions/22731394/max-lines-textarea
-   var lines = textarea.value.split("\n");
+textarea.onkeyup = function () {
+  // https://stackoverflow.com/questions/22731394/max-lines-textarea
+  var lines = textarea.value.split("\n");
 
-   for (var i = 0; i < lines.length; i++) 
-   {
-         if (lines[i].length <= spaces) continue;
-         var j = 0;
+  for (var i = 0; i < lines.length; i++) {
+    if (lines[i].length <= spaces) continue;
+    var j = 0;
 
-        var space = spaces;
+    var space = spaces;
 
-        while (j++ <= spaces) 
-        {
-           if (lines[i].charAt(j) === " ") space = j;  
-        }
+    while (j++ <= spaces) {
+      if (lines[i].charAt(j) === " ") space = j;
+    }
     lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");
     lines[i] = lines[i].substring(0, space);
   }
-    if(lines.length>limit)
-    {
-        textarea.style.color = 'red';
-        setTimeout(function(){
-            textarea.style.color = '';
-        },500);
-    }    
-   textarea.value = lines.slice(0, limit).join("\n");
+  if (lines.length > limit) {
+    textarea.style.color = "red";
+    setTimeout(function () {
+      textarea.style.color = "";
+    }, 500);
+  }
+  textarea.value = lines.slice(0, limit).join("\n");
 };
