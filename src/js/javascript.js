@@ -43,6 +43,11 @@ function uploadePressed() {
 }
 
 var canvas = new fabric.Canvas("C");
+var canvasWidth = canvas.width;
+var canvasHeight = canvas.height;
+var currentImage;
+var imgHeight;
+var imgWidth;
 
 function setBackgroundImage(input) {
   canvas.setWidth(500);
@@ -54,20 +59,22 @@ function setBackgroundImage(input) {
       const reader = new FileReader();
       reader.onload = (e) => {
         fabric.Image.fromURL(reader.result, function (img) {
-          var imgHeight = img.height;
-          var imgWidth = img.width;
-          if (imgHeight > imgWidth) {
-            img.scaleToHeight(canvas.height);
-            var scaleX = canvas.height / img.height;
-            canvas.setWidth(img.width * scaleX);
+          currentImage = img;
+          if (img.height > img.width) {
+            scalePictureToHeight(img);
           } else {
-            img.scaleToWidth(canvas.width);
-            var scaleY = canvas.width / img.width;
-            canvas.setHeight(img.height * scaleY);
+            scalePictureToWidth(img);
           }
           canvas.setBackgroundImage(img);
           canvas.requestRenderAll();
+
           document.getElementById("modalTriggerButton").click();
+          if (
+            document.getElementById("canvasContainer").offsetWidth < canvasWidth
+          ) {
+            fitResponsiveCanvas();
+            scalePictureToWidth(currentImage);
+          }
         });
         resolve(e.target.result);
       };
@@ -81,6 +88,18 @@ function setBackgroundImage(input) {
   });
 }
 
+function scalePictureToWidth(img) {
+  img.scaleToWidth(canvas.width);
+  var scaleY = canvas.width / img.width;
+  canvas.setHeight(img.height * scaleY);
+}
+
+function scalePictureToHeight(img) {
+  img.scaleToHeight(canvas.height);
+  var scaleX = canvas.height / img.height;
+  canvas.setWidth(img.width * scaleX);
+}
+
 function removeObject() {
   canvas.remove(canvas.getActiveObject());
 }
@@ -92,26 +111,30 @@ function toggleDrawOnCanvas() {
     canvas.isDrawingMode = true;
   }
 }
-/*
+
+/***********************************************\ 
+| Mangler at skrive hvor resize er taget fra     |
+\***********************************************/
 
 window.onresize = (event) => {
-  fitResponsiveCanvas();
+  if (document.getElementById("canvasContainer").offsetWidth < canvasWidth) {
+    fitResponsiveCanvas();
+    scalePictureToWidth(currentImage);
+  }
 };
 
 function fitResponsiveCanvas() {
   // canvas dimensions
   let canvasSize = {
-    width: 600,
-    height: 400
+    width: 500,
   };
   // canvas container dimensions
   let containerSize = {
-    width: document.getElementById('canvasContainer').offsetWidth,
-    height: document.getElementById('canvasContainer').offsetHeight
+    width: document.getElementById("canvasContainer").offsetWidth,
   };
-  let scaleRatio = Math.min(containerSize.width / canvasSize.width, containerSize.height / canvasSize.height);
-  canvas.setWidth(containerSize.width);         
-}*/
+  let scaleRatio = Math.min(containerSize.width / canvasSize.width);
+  canvas.setWidth(containerSize.width);
+}
 
 function Addtext() {
   var text = document.getElementById("pictureText").value;
@@ -119,11 +142,26 @@ function Addtext() {
     new fabric.IText(text, {
       left: 100,
       top: 100,
+      fill: document.getElementById("colorInput").value,
+      stroke: "#000000",
+      strokeWidth: 0.3,
       fontSize: 35,
     })
   );
   document.getElementById("pictureText").value = "";
 }
+
+document
+  .getElementById("pictureText")
+  .addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      Addtext();
+    }
+  });
+
+/***********************************************\ 
+| Taken from https://codepen.io/Jadev/pen/mLNzmB |
+\***********************************************/
 
 canvas.on("object:added", function () {
   if (!isRedoing) {
@@ -159,6 +197,22 @@ function redo() {
 
 function duplicate() {
   var original = document.getElementById("duplicater" + i);
+
+  var clone = original.cloneNode(true); // "deep" clone
+  clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
+  clone.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
+
+  clone.children[0].children[1].children[1].children[0].id = "imageDesc" + i; //så de ikke har samme id
+  clone.children[0].children[1].children[0].id = "imageDesc" + i; //så de ikke har samme id
+  clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
+  clone.querySelector("img").id = "drag" + (i + 1);
+  original.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
+  original.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
+  //let child = clone.querySelector("img");
+  //child.addEventListener("click", chooseFile());
+  //onclick = chooseFile(); // event handlers are not cloned
+
+  original.parentNode.appendChild(clone);
 
   if (i < 1) {
     var clone = original.cloneNode(true); // "deep" clone
