@@ -28,23 +28,24 @@ function chooseFile() {
 
 function filePreview(imgSRC) { 
   
-        /*var img = document.getElementById("imagePreview");
-        img.src = reader.result;
-        img.width = 300;*/
-        duplicate();
-        var imageContainer = document.getElementById("duplicater" + i);
-        i++;
-        var img = imageContainer.querySelector("img");
-        img.src = imgSRC;
+  /*var img = document.getElementById("imagePreview");
+  img.src = reader.result;
+  img.width = 300;*/
+  duplicate();
+  var imageContainer = document.getElementById("duplicater" + i);
+  i++;
+  var img = imageContainer.querySelector("img");
+  img.src = imgSRC;
 }
 
 function uploadePressed(){
-  var img = canvas.toDataURL("image/png");
-  filePreview(img);
+var img = canvas.toDataURL("image/png");
+filePreview(img);
 }
 
 var canvas = new fabric.Canvas('C');
 
+var detHerErEnTest;
 
         function setBackgroundImage(input){
           canvas.setWidth(500);
@@ -140,16 +141,27 @@ function filePreviewfake() {
 
 function duplicate() {
   var original = document.getElementById("duplicater" + i);
-  var clone = original.cloneNode(true); // "deep" clone
  
+  
+
+
+  var clone = original.cloneNode(true); // "deep" clone
+  clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
+  clone.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
+
+  clone.children[0].children[1].children[1].children[0].id = ("imageDesc"+" "+ "disabled"); //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
+  clone.children[0].children[1].children[0].id = ("imageDesc"+" "+ "disabled");             //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
   clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + (i + 1);
-
+  original.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
+  original.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
   //let child = clone.querySelector("img");
   //child.addEventListener("click", chooseFile());
   //onclick = chooseFile(); // event handlers are not cloned
 
   original.parentNode.appendChild(clone);
+  
+
 }
 
 function allowDrop(ev) {
@@ -168,6 +180,7 @@ function drop(ev) {
 
   const first = src.parentNode.parentNode.children.item(1);
   const last = ev.currentTarget.parentNode.children.item(1);
+  
   const firstClone = first.cloneNode(true);
   const lastClone = last.cloneNode(true);
 
@@ -182,7 +195,7 @@ var limit = 2; // <---max no of lines you want in textarea
 var textarea = document.getElementById("imageDesc");
 var spaces = textarea.getAttribute("cols");
 
-textarea.onkeyup = function() {
+textarea.onkeyup = function() { // https://stackoverflow.com/questions/22731394/max-lines-textarea
    var lines = textarea.value.split("\n");
 
    for (var i = 0; i < lines.length; i++) 
@@ -208,4 +221,3 @@ textarea.onkeyup = function() {
     }    
    textarea.value = lines.slice(0, limit).join("\n");
 };
-
