@@ -198,12 +198,12 @@ function redo() {
 function duplicate() {
   var original = document.getElementById("duplicater" + i);
   var clone = original.cloneNode(true); // "deep" clone
+  
   clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
   clone.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
 
-  clone.children[0].children[1].children[1].children[0].id =
-    "imageDesc" + " " + "disabled"; //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
-  clone.children[0].children[1].children[0].id = "imageDesc" + " " + "disabled"; //Virker ikke, men var ment som at man ikke kan skrive i tekstfeltet
+  clone.children[0].children[1].children[1].children[0].id = ("imageDesc" + i); //Så consolen ikke brokker sig over elementer med samme id.
+  clone.children[0].children[1].children[0].id = ("imageDesc" + i);             //Så consolen ikke brokker sig over elementer med samme id.
   clone.id = "duplicater" + (i + 1); // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + (i + 1);
   //let child = clone.querySelector("img");
@@ -239,12 +239,16 @@ function drop(ev) {
   first.replaceWith(lastClone);
 }
 
-var limit = 2; // <---max no of lines you want in textarea
+var limit = 2; // <---max no. of lines you want in textarea
 var textarea = document.getElementById("imageDesc");
 var spaces = textarea.getAttribute("cols");
 
-textarea.onkeyup = function () {
-  // https://stackoverflow.com/questions/22731394/max-lines-textarea
+textarea.onkeydown = function () {
+
+/****************************************************************************\ 
+| Taken from https://stackoverflow.com/questions/22731394/max-lines-textarea |
+\****************************************************************************/
+
   var lines = textarea.value.split("\n");
 
   for (var i = 0; i < lines.length; i++) {
