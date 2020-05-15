@@ -60,7 +60,7 @@ function setBackgroundImage(input){
       const reader = new FileReader();
       reader.onload = (e) => {          
         fabric.Image.fromURL(reader.result, function (img) {   
-        currentImage = img;         
+        currentImage = img;       
         if (img.height > img.width){
           scalePictureToHeight(img);
         } else {
@@ -68,8 +68,12 @@ function setBackgroundImage(input){
         }   
         canvas.setBackgroundImage(img);
         canvas.requestRenderAll();
-        document.getElementById("modalTriggerButton").click();
         
+        document.getElementById("modalTriggerButton").click();
+        if(document.getElementById('canvasContainer').offsetWidth < canvasWidth){
+          fitResponsiveCanvas();
+          scalePictureToWidth(currentImage);
+        }
     });
         resolve(e.target.result);
       };
@@ -108,6 +112,10 @@ function toggleDrawOnCanvas(){
   }
 }
 
+ /***********************************************\ 
+| Mangler at skrive hvor resize er taget fra     |
+\***********************************************/ 
+
 
 window.onresize = (event) => {
   if(document.getElementById('canvasContainer').offsetWidth < canvasWidth){
@@ -135,10 +143,19 @@ function Addtext() {
   canvas.add(new fabric.IText(text, {
       left: 100,
       top: 100,
+      fill: document.getElementById("colorInput").value,
+      stroke: "#000000",
+      strokeWidth: 0.3,
       fontSize: 35
   }));
   document.getElementById("pictureText").value = "";
 }
+
+document.getElementById("pictureText").addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+      Addtext();
+  }
+});
 
   
  /***********************************************\ 
