@@ -26,7 +26,7 @@ function chooseFile() {
   document.getElementById("fileInput").click();
 }
 
-function filePreview(imgSRC) {
+function filePreview(imgSRC) {   
   /*var img = document.getElementById("imagePreview");
   img.src = reader.result;
   img.width = 300;*/
@@ -37,19 +37,19 @@ function filePreview(imgSRC) {
   img.src = imgSRC;
 }
 
-function uploadePressed() {
-  var img = canvas.toDataURL("image/png");
-  filePreview(img);
+function uploadePressed(){
+var img = canvas.toDataURL("image/png");
+filePreview(img);
 }
 
-var canvas = new fabric.Canvas("C");
-var canvasWidth = canvas.width;
+var canvas = new fabric.Canvas('C');
+var canvasWidth  = canvas.width;
 var canvasHeight = canvas.height;
 var currentImage;
 var imgHeight;
 var imgWidth;
 
-function setBackgroundImage(input) {
+function setBackgroundImage(input){
   canvas.setWidth(500);
   canvas.setHeight(500);
   document.getElementById("pictureText").value = "";
@@ -57,25 +57,23 @@ function setBackgroundImage(input) {
   return new Promise((resolve, reject) => {
     if (input.files && input.files[0]) {
       const reader = new FileReader();
-      reader.onload = (e) => {
-        fabric.Image.fromURL(reader.result, function (img) {
-          currentImage = img;
-          if (img.height > img.width) {
-            scalePictureToHeight(img);
-          } else {
-            scalePictureToWidth(img);
-          }
-          canvas.setBackgroundImage(img);
-          canvas.requestRenderAll();
-
-          document.getElementById("modalTriggerButton").click();
-          if (
-            document.getElementById("canvasContainer").offsetWidth < canvasWidth
-          ) {
-            fitResponsiveCanvas();
-            scalePictureToWidth(currentImage);
-          }
-        });
+      reader.onload = (e) => {          
+        fabric.Image.fromURL(reader.result, function (img) {   
+        currentImage = img;       
+        if (img.height > img.width){
+          scalePictureToHeight(img);
+        } else {
+          scalePictureToWidth(img);
+        }   
+        canvas.setBackgroundImage(img);
+        canvas.requestRenderAll();
+        
+        document.getElementById("modalTriggerButton").click();
+        if(document.getElementById('canvasContainer').offsetWidth < canvasWidth){
+          fitResponsiveCanvas();
+          scalePictureToWidth(currentImage);
+        }
+    });
         resolve(e.target.result);
       };
       reader.onerror = () => {
@@ -91,33 +89,44 @@ function setBackgroundImage(input) {
 function scalePictureToWidth(img) {
   img.scaleToWidth(canvas.width);
   var scaleY = canvas.width / img.width;
-  canvas.setHeight(img.height * scaleY);
+  canvas.setHeight(img.height*scaleY);
 }
 
-function scalePictureToHeight(img) {
+function scalePictureToHeight(img){
   img.scaleToHeight(canvas.height);
   var scaleX = canvas.height / img.height;
-  canvas.setWidth(img.width * scaleX);
+  canvas.setWidth(img.width*scaleX);
 }
 
-function removeObject() {
+function removeObject(){
   canvas.remove(canvas.getActiveObject());
 }
 
-function toggleDrawOnCanvas() {
-  if (canvas.isDrawingMode == true) {
+function toggleDrawOnCanvas(){
+  if(canvas.isDrawingMode == true){
     canvas.isDrawingMode = false;
+    document.getElementById("drawOnCanvasButton").style.backgroundColor = "#81939D";
   } else {
     canvas.isDrawingMode = true;
+    document.getElementById("drawOnCanvasButton").style.backgroundColor = "#64727a";
+    canvas.freeDrawingBrush.width = 3;
   }
 }
 
-/***********************************************\ 
+document.getElementById("colorInput").onchange = (event) =>{
+  
+  document.getElementById("colorButton").style.color = document.getElementById("colorInput").value;
+  canvas.freeDrawingBrush.color = document.getElementById("colorInput").value;
+}
+
+ /***********************************************\ 
 | Mangler at skrive hvor resize er taget fra     |
-\***********************************************/
+\***********************************************/ 
+
+
 
 window.onresize = (event) => {
-  if (document.getElementById("canvasContainer").offsetWidth < canvasWidth) {
+  if(document.getElementById('canvasContainer').offsetWidth < canvasWidth){
     fitResponsiveCanvas();
     scalePictureToWidth(currentImage);
   }
@@ -130,41 +139,38 @@ function fitResponsiveCanvas() {
   };
   // canvas container dimensions
   let containerSize = {
-    width: document.getElementById("canvasContainer").offsetWidth,
+    width: document.getElementById('canvasContainer').offsetWidth
   };
   let scaleRatio = Math.min(containerSize.width / canvasSize.width);
-  canvas.setWidth(containerSize.width);
+  canvas.setWidth(containerSize.width);         
 }
 
 function Addtext() {
   var text = document.getElementById("pictureText").value;
-  canvas.add(
-    new fabric.IText(text, {
+  canvas.add(new fabric.IText(text, {
       left: 100,
       top: 100,
       fill: document.getElementById("colorInput").value,
       stroke: "#000000",
       strokeWidth: 0.3,
-      fontSize: 35,
-    })
-  );
+      fontSize: 35
+  }));
   document.getElementById("pictureText").value = "";
 }
 
-document
-  .getElementById("pictureText")
-  .addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
+document.getElementById("pictureText").addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
       Addtext();
-    }
-  });
+  }
+});
 
-/***********************************************\ 
+  
+ /***********************************************\ 
 | Taken from https://codepen.io/Jadev/pen/mLNzmB |
-\***********************************************/
+\***********************************************/ 
 
-canvas.on("object:added", function () {
-  if (!isRedoing) {
+canvas.on('object:added',function(){
+  if(!isRedoing){
     h = [];
   }
   isRedoing = false;
@@ -172,16 +178,18 @@ canvas.on("object:added", function () {
 
 var isRedoing = false;
 var h = [];
-function undo() {
-  if (canvas._objects.length > 0) {
-    h.push(canvas._objects.pop());
-    canvas.renderAll();
+
+function undo(){
+  if(canvas._objects.length>0){
+   h.push(canvas._objects.pop());
+   canvas.renderAll();
   }
 }
-function redo() {
+
+function redo(){  
   if (h.length > 0) {
     isRedoing = true;
-    canvas.add(h.pop());
+   canvas.add(h.pop());
   }
 }
 
@@ -196,7 +204,8 @@ function redo() {
 */
 
 function duplicate() {
-  var original = document.getElementById("duplicater" + i);
+  var original = document.getElementById("duplicater" + i); 
+
   var clone = original.cloneNode(true); // "deep" clone
   
   clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
@@ -229,7 +238,7 @@ function drop(ev) {
 
   const first = src.parentNode.parentNode.children.item(1);
   const last = ev.currentTarget.parentNode.children.item(1);
-
+  
   const firstClone = first.cloneNode(true);
   const lastClone = last.cloneNode(true);
 
@@ -251,23 +260,26 @@ textarea.onkeydown = function () {
 
   var lines = textarea.value.split("\n");
 
-  for (var i = 0; i < lines.length; i++) {
-    if (lines[i].length <= spaces) continue;
-    var j = 0;
+   for (var i = 0; i < lines.length; i++) 
+   {
+         if (lines[i].length <= spaces) continue;
+         var j = 0;
 
-    var space = spaces;
+        var space = spaces;
 
-    while (j++ <= spaces) {
-      if (lines[i].charAt(j) === " ") space = j;
-    }
+        while (j++ <= spaces) 
+        {
+           if (lines[i].charAt(j) === " ") space = j;  
+        }
     lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");
     lines[i] = lines[i].substring(0, space);
   }
-  if (lines.length > limit) {
-    textarea.style.color = "red";
-    setTimeout(function () {
-      textarea.style.color = "";
-    }, 500);
-  }
-  textarea.value = lines.slice(0, limit).join("\n");
+    if(lines.length>limit)
+    {
+        textarea.style.color = 'red';
+        setTimeout(function(){
+            textarea.style.color = '';
+        },500);
+    }    
+   textarea.value = lines.slice(0, limit).join("\n");
 };
