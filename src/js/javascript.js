@@ -230,6 +230,22 @@ function drag(ev) {
   ev.dataTransfer.setData("src", ev.target.id);
 }
 
+var modal = document.getElementById("modalPreview")
+ //inspireret af https://www.w3schools.com/howto/howto_css_modal_images.asp (IKKE ALT ER TAGET DERFRA)
+function show(event){
+  event.preventDefault();
+  var target = event.target; //billedets URL man klikker på
+  var modalImg = document.getElementById("img01"); // billedet man overskriver
+   modalImg.src = target.src; //datatransfer
+   modal.style.display = "block";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 function drop(ev) {
   ev.preventDefault();
   var src = document.getElementById(ev.dataTransfer.getData("src"));
