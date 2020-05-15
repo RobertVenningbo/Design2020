@@ -3,3 +3,30 @@
     background-color: transparent!important;
 }
 
+.noborder {
+    border:none!important;
+}
+
+.firstIndent{
+    margin-left: 20px;
+}
+
+.secondIndent{
+    margin-left: 40px;
+}
+
+.thirdIndent{
+    margin-left: 60px;
+}
+
+.botMargin{
+    margin-bottom: 20px;
+}
+
+.iconFontSize15{
+    font-size: 15px;
+}
+
+.thickness{
+    font-weight: bold;
+}

@@ -66,8 +66,8 @@
   <div class="container">
     <ul class="sidenav" id="mobile-links">
       <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Help</a></li>
+      <li><a href="#modalAbout" class="modal-trigger">About</a></li>
+      <li><a href="#modalHelp" class="modal-trigger">Help</a></li>
       <li><a class='dropdown-trigger no-shadow' href='#' data-target='dropdown-phone'>Temaer</a></li>
 
     </ul>
@@ -81,8 +81,8 @@
       </a>
       <ul class="left hide-on-med-and-down">
         <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Help</a></li>
+        <li><a href="#modalAbout" class="modal-trigger">About</a></li>
+        <li><a href="#modalHelp" class="modal-trigger">Help</a></li>
         <li><a class='dropdown-trigger btn no-shadow' href='#' data-target='dropdown-big'>Temaer</a></li>
       </ul>
     </div>
@@ -97,6 +97,76 @@
         <span>Upload photo</span>
         <i class="material-icons right">photo</i>
       </a>
+    </div>
+
+    <!-- Help section (modal)-->
+    <div id="modalHelp" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <i class="material-icons left" style="font-size: 50px">help</i>
+        <h3>Help Section</h3>
+       <ul>
+        <ul style="margin-bottom: 10px;">
+          <h5 class="firstIndent">Frequently asked questions</h5>
+        </ul>
+        <ul>
+        <i class="material-icons left secondIndent iconFontSize15">add_a_photo</i>
+        <li class="botMargin">How do I add a photo?</li>
+        <p class="thirdIndent botMargin">To add a photo simply press on the upload button, which will open
+           a new window where you can select a given picture you'd like to upload.
+        </p>
+      </ul>
+
+        <ul>
+          <i class="material-icons left secondIndent iconFontSize15">cached</i>
+          <li class="botMargin">How do I swap pictures?</li>
+          <p class="thirdIndent botMargin">
+            To swap photos, simply select the picture you'd like to swap, and hold in your cursor on a given picture and drag it over the picture you'd like to swap with.
+          </p>
+        </ul>
+
+        <ul>
+          <i class="material-icons left secondIndent iconFontSize15">edit</i>
+          <li class="botMargin">How do I edit pictures?</li>
+          <p class="thirdIndent botMargin">
+           To edit a given photo, simply click on the photo and a new pop-up will appear, where there's different kind of buttons to edit your picture with. If happy with the result click "upload", otherwise click "cancel" to cancel.
+          </p>
+        </ul>
+
+        <ul>
+          <i class="material-icons left secondIndent iconFontSize15">color_lens</i>
+          <li class="botMargin">How do I change theme?</li>
+          <p class="thirdIndent botMargin">
+            To change theme find the "Change Theme" button in the navigation bar, whereafter you have 4 themes to choose between.
+          </p>
+        </ul>
+
+      </ul>
+      </div>
+    </div>
+
+    <!-- Help section (modal)-->
+    <div id="modalAbout" class="modal bottom-sheet">
+      <div class="modal-content">
+        <ul>
+          <i class="material-icons right secondIndent iconFontSize15">plus_one</i>
+           <li class="botMargin thickness">This project is made in relation of our exam in the course 'Systematisk design af brugergrænseflader' and is made by: </li>
+           <p class="thirdIndent botMargin">
+            Philip Morten Qwist Bilbo
+          </p>
+          <p class="thirdIndent botMargin">
+            Thomas Dal
+          </p>
+          <p class="thirdIndent botMargin">
+            Oskar Jensen
+          </p>
+          <p class="thirdIndent botMargin">
+            Jeppe Mark Møller
+          </p>
+          <p class="thirdIndent botMargin">
+            Robert Voigt Venningbo
+          </p>
+        </ul>
+      </div>
     </div>
 
     <!-- image modal -->
