@@ -105,27 +105,28 @@
         <h4>Edit photo</h4>
         <div class="container" id="canvasContainer">
           <canvas id="C" height="500" width="500"></canvas>
-          <input id="pictureText" type="text">
-          <a id="addText_btn" href="#" onclick="Addtext()" class="btn-large blue darken-1">
-            <span></span>
-            <i class="material-icons center">title</i>
+          <input id="pictureText" type="text" placeholder="Write your caption here..">
+          <a id="addText_btn" href="#" onclick="Addtext()" class="btn blue darken-1">
+            <span>Add Text</span>
+            <!--<i class="material-icons center">title</i> -->
           </a>
-          <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn-large blue darken-1">
+          <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn blue darken-1">
             <i class="material-icons center">delete</i>
           </a>
-          <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn-large blue darken-1">
+          <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn blue darken-1">
             <i class="material-icons center">edit</i>
           </a>
-          <a id="undoButton" href="#" onclick="undo()" class="btn-large blue darken-1">
+          <a id="undoButton" href="#" onclick="undo()" class="btn blue darken-1">
             <i class="material-icons center">undo</i>
           </a>
-          <a id="drawOnCanvasButton" href="#" onclick="redo()" class="btn-large blue darken-1">
+          <a id="drawOnCanvasButton" href="#" onclick="redo()" class="btn blue darken-1">
             <i class="material-icons center">redo</i>
           </a>
         </div>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="uploadePressed()">Uploade</a>
+      <div class="modal-footer center">
+        <a href="#!" class="btn-flat modal-close waves-effect waves-green">Cancel</a>
+        <a href="#!" class="btn-flat modal-close waves-effect waves-green" onclick="uploadePressed()">Upload</a>
       </div>
     </div>
 
