@@ -102,7 +102,7 @@
       <!-- hide-on-med-and-down er ikke mobile-first tror jeg, men tænker det kan fikses-->
       <a id="upload_btn" href="#" class="btn-large botMargin hide-on-med-and-down" style="background-color: #81939D;" onclick="chooseFile()">
         <span>Upload photo</span>
-        <i class="material-icons right">photo</i>
+        <i class="material-icons right">file_upload</i>
       </a>
     </div>
 
@@ -185,6 +185,7 @@
           <input id="pictureText" type="text" placeholder="Write your caption here.." onsubmit="Addtext()">
           <a id="addText_btn" href="#" onclick="Addtext()" class="btn" style="background-color: #81939D;">
             <span>Add Text</span>
+          </a>
           <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn" style="background-color: #81939D;"> <!--TODO lav det her til en style klasee-->
             <i class="material-icons center">delete</i>
           </a>
@@ -199,6 +200,9 @@
           </a>
           <a id="colorButton" href="#" onclick="colorInput.click()" class="btn" style="background-color: #81939D;">
             <i class="material-icons center">color_lens</i>
+          </a>
+          <a id="filterButton" href="#" class="btn" onclick="addFilter()" style="background-color: #81939D;">
+            <i class="material-icons center">filter</i>
           </a>
         </div>
       </div>
