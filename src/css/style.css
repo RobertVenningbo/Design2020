@@ -8,15 +8,15 @@
 }
 
 .firstIndent{
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .secondIndent{
-    margin-left: 40px;
+    margin-left: 42px;
 }
 
 .thirdIndent{
-    margin-left: 60px;
+    margin-left: 71px;
 }
 
 .botMargin{
@@ -24,7 +24,7 @@
 }
 
 .iconFontSize15{
-    font-size: 15px;
+    font-size: 17px!important;
 }
 
 .thickness{
