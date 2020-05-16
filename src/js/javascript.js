@@ -280,7 +280,7 @@ function show(event){
    var captionText = document.getElementById("caption");
    var descText = document.getElementById("caption1");
    captionText.innerHTML = target.parentNode.parentNode.children[1].children[0].value; //henter billedets "title"-tekst
-   descText.innerHTML = target.parentNode.parentNode.children[1].children[1].children[0].value;
+   descText.innerHTML = target.parentNode.parentNode.children[1].children[1].children[0].value; //henter billedets "description"-tekst
    modal.style.display = "block";
    // document.getElementById("caption").value; //ændre
 }
