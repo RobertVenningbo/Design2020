@@ -95,8 +95,8 @@ function fitPictureToCanvas(img){
     fitResponsiveCanvas();
     scalePictureToWidth(currentImage);
   }
-  document.getElementById("pictureText").style.width = canvas.width;
-  document.getElementById("canvasButtons").style.width = canvas.width;
+  document.getElementById("pictureText").style.width = document.getElementById("C").style.width;
+  document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 }
 
 function scalePictureToWidth(img) {
@@ -144,8 +144,8 @@ window.onresize = (event) => {
       scalePictureToWidth(currentImage);
     }
   }
-  document.getElementById("pictureText").style.width= canvas.width;
-  document.getElementById("canvasButtons").style.width = canvas.width;
+  document.getElementById("pictureText").style.width= document.getElementById("C").style.width;
+  document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 };
 
 function fitResponsiveCanvas() {
