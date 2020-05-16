@@ -245,7 +245,7 @@ function duplicate() {
 
   clone.children[0].children[1].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
   clone.children[0].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
-  clone.children[0].children[2].children[0].id = "trashCan" + i; //Så consolen ikke brokker sig over elementer med samme id.
+  clone.children[0].children[2].children[0].id = "trashCan" + i;
   clone.id = "duplicater" + i; // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + i;
   //let child = clone.querySelector("img");
@@ -264,7 +264,6 @@ function drag(ev) {
 }
 
 var modal = document.getElementById("modalPreview")
- //inspireret af https://www.w3schools.com/howto/howto_css_modal_images.asp (IKKE ALT ER TAGET DERFRA)
 function show(event){
   event.preventDefault();
   var target = event.target; //billedet man klikker på
@@ -342,11 +341,14 @@ textarea.onkeydown = function () {
   textarea.value = lines.slice(0, limit).join("\n");
 };
 
-function removeCard(btn) {
+function removeCard(id) {
   if(document.getElementsByClassName("card").length > 1) {
-    console.log((btn.parentNode).parentNode);
-   // ((btn.parentNode).parentNode).removeChild(btn.parentNode);
-    document.getElementById("table").children[0].remove();
+    for(var i = 0; i < document.getElementById("table").children.length; i ++) {
+      if(id == "trashCan" + i) {
+
+      document.getElementById("table").children[i].remove();
+      }
+    }
   }
 }
 
