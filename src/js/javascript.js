@@ -27,16 +27,6 @@ function chooseFile() {
 }
 
 function filePreview(imgSRC) {
-  /*var img = document.getElementById("imagePreview");
-  img.src = reader.result;
-  img.width = 300;*/
-  /*duplicate();
-  
-  var imageContainer = document.getElementById("duplicater" + i);
-  i++;
-  var img = imageContainer.querySelector("img");
-  img.src = imgSRC;
-  */
   if (i == 0) {
     var imageContainer = document.getElementById("duplicater" + 0);
     var img = imageContainer.querySelector("img");
@@ -63,7 +53,7 @@ var imgHeight;
 var imgWidth;
 
 function setBackgroundImage(input) {
-  canvas.setWidth(500);
+  canvas.setWidth(600);
   canvas.setHeight(500);
   document.getElementById("pictureText").value = "";
   canvas.clear();
@@ -101,6 +91,8 @@ function fitPictureToCanvas(img){
     fitResponsiveCanvas();
     scalePictureToWidth(currentImage);
   }
+  document.getElementById("pictureText").style.width= document.getElementById("C").style.width;
+  document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 }
 
 function scalePictureToWidth(img) {
@@ -146,15 +138,18 @@ document.getElementById("colorInput").onchange = (event) => {
 window.onresize = (event) => {
   if (document.getElementById("canvasContainer").offsetWidth < canvasWidth) {
     fitResponsiveCanvas();
-    scalePictureToWidth(currentImage);
+    if (currentImage != null){
+      scalePictureToWidth(currentImage);
+    }
   }
-  this.document.getElementById("pictureText").style.width= this.document.getElementById("C").style.width;
+  document.getElementById("pictureText").style.width= document.getElementById("C").style.width;
+  document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 };
 
 function fitResponsiveCanvas() {
   // canvas dimensions
   let canvasSize = {
-    width: 500,
+    width: 600,
   };
   // canvas container dimensions
   let containerSize = {
@@ -297,8 +292,8 @@ var textarea = document.getElementById("imageDesc");
 var spaces = textarea.getAttribute("cols");
 
 textarea.onkeydown = function () {
-  /****************************************************************************\ 
-| Taken from https://stackoverflow.com/questions/22731394/max-lines-textarea |
+ /****************************************************************************\ 
+| Taken from https://stackoverflow.com/questions/22731394/max-lines-textarea  |
 \****************************************************************************/
 
   var lines = textarea.value.split("\n");
