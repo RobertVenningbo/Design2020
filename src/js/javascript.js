@@ -71,13 +71,12 @@ function setBackgroundImage(input) {
     if (input.files && input.files[0]) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        fabric.Image.fromURL(reader.result, function (img) {
-          currentImage = img;
-          
-          document.getElementById("modalTriggerButton").click();
-          fitPictureToCanvas(img);
-        });
-        resolve(e.target.result);
+      fabric.Image.fromURL(reader.result, function (img) {
+        currentImage = img;
+        document.getElementById("modalTriggerButton").click();
+        fitPictureToCanvas(img);
+      });
+      resolve(e.target.result);
       };
       reader.onerror = () => {
         reject();
@@ -101,6 +100,9 @@ function fitPictureToCanvas(img){
     fitResponsiveCanvas();
     scalePictureToWidth(currentImage);
   }
+
+  document.getElementById("pictureText").style.width = canvas.width;
+  document.getElementById("canvasButtons").style.width = canvas.width;
 }
 
 function scalePictureToWidth(img) {
