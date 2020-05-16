@@ -213,6 +213,7 @@ function toggleGrayScale(){
     currentImage.filters=[];
     currentImage.applyFilters();
     fitPictureToCanvas(currentImage);
+    document.getElementById("grayScaleIcon").textContent = "invert_colors";
     grayScale = false;
   } else {
     fabric.textureSize = 4096;
@@ -220,6 +221,7 @@ function toggleGrayScale(){
     var tmpImage = currentImage;
     tmpImage.applyFilters();
     fitPictureToCanvas(tmpImage);
+    document.getElementById("grayScaleIcon").textContent = "invert_colors_off";
     grayScale = true;
   }
 }
