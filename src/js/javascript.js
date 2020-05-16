@@ -49,6 +49,7 @@ var canvas = new fabric.Canvas("C");
 var currentColor = "#000000";
 var canvasWidth = canvas.width;
 var canvasHeight = canvas.height;
+var grayScale = false;
 var currentImage;
 var imgHeight;
 var imgWidth;
@@ -84,11 +85,9 @@ function setBackgroundImage(input) {
 }
 
 function fitPictureToCanvas(img){
-  if (img.height > img.width) {
-    scalePictureToHeight(img);
-  } else {
+  
     scalePictureToWidth(img);
-  }
+  
   canvas.setBackgroundImage(img);
   canvas.requestRenderAll();
   if (document.getElementById("canvasContainer").offsetWidth < canvasWidth) {
@@ -144,7 +143,6 @@ window.onresize = (event) => {
       scalePictureToWidth(currentImage);
     }
   }
-  document.getElementById("addText_btn").style.width = document.getElementById("undoButton").style.width*2+4;
   document.getElementById("pictureText").style.width= document.getElementById("C").style.width;
   document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 };
@@ -210,11 +208,20 @@ function redo() {
   }
 }
 
-function addFilter(){
-  fabric.textureSize = 4096;
-  currentImage.filters.push(new fabric.Image.filters.Grayscale());
-  currentImage.applyFilters();
-  fitPictureToCanvas(currentImage);
+function toggleGrayScale(){
+  if(grayScale == true){
+    currentImage.filters=[];
+    currentImage.applyFilters();
+    fitPictureToCanvas(currentImage);
+    grayScale = false;
+  } else {
+    fabric.textureSize = 4096;
+    currentImage.filters.push(new fabric.Image.filters.Grayscale());
+    var tmpImage = currentImage;
+    tmpImage.applyFilters();
+    fitPictureToCanvas(tmpImage);
+    grayScale = true;
+  }
 }
 
 /*function filePreview() {
@@ -335,6 +342,20 @@ textarea.onkeydown = function () {
 
 function removeCard(btn) {
   if(document.getElementsByClassName("card").length > 1) {
-    ((btn.parentNode).parentNode).removeChild(btn.parentNode);
+    console.log((btn.parentNode).parentNode);
+   // ((btn.parentNode).parentNode).removeChild(btn.parentNode);
+    document.getElementById("table").children[0].remove();
   }
+}
+
+function updateRow() {
+  for(var i = 0; i < document.getElementById("table").children.length; i++) {
+    if(document.getElementById("table").children[i] == null) {
+      var temp = document.getElementById("table").children[i];
+      document.getElementById("table").children[i+1] = temp;
+    }
+    console.log(document.getElementById("table").children[i]);
+
+  }
+
 }
