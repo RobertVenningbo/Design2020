@@ -144,6 +144,7 @@ window.onresize = (event) => {
       scalePictureToWidth(currentImage);
     }
   }
+  document.getElementById("addText_btn").style.width = document.getElementById("undoButton").style.width*2+4;
   document.getElementById("pictureText").style.width= document.getElementById("C").style.width;
   document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 };
@@ -280,6 +281,7 @@ span.onclick = function() {
   modal.style.display = "none";
 }
 
+
 function drop(ev) {
   ev.preventDefault();
   var src = document.getElementById(ev.dataTransfer.getData("src"));
@@ -329,6 +331,7 @@ textarea.onkeydown = function () {
   }
   textarea.value = lines.slice(0, limit).join("\n");
 };
+
 function removeCard(btn) {
   if(document.getElementsByClassName("card").length > 1) {
     ((btn.parentNode).parentNode).removeChild(btn.parentNode);
