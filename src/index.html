@@ -44,6 +44,7 @@
     <input 
     type="color"
     id="colorInput" 
+    value="#000000"
     />
   </div>
 
@@ -184,25 +185,25 @@
           <canvas id="C" height="500" width="600"></canvas>
           <input id="pictureText" type="text" placeholder="Write your caption here.." onsubmit="Addtext()">
           <div id="canvasButtons">
-            <a id="addText_btn" href="#" onclick="Addtext()" class="btn" style="background-color: #81939D;">
+            <a id="addText_btn" href="#" onclick="Addtext()" class="btn editPhotoButtons" width="105.4px">
               <span>Add Text</span>
             </a>
-            <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn" style="background-color: #81939D;"> <!--TODO lav det her til en style klasee-->
+            <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn editPhotoButtons"> 
               <i class="material-icons center">delete</i>
             </a>
-            <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn" style="background-color: #81939D;">
+            <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn" style="background-color: #81939D; margin-bottom: 5px;" >
               <i class="material-icons center">brush</i>
             </a>
-            <a id="undoButton" href="#" onclick="undo()" class="btn" style="background-color: #81939D;">
+            <a id="undoButton" href="#" onclick="undo()" class="btn editPhotoButtons" >
               <i class="material-icons center">undo</i>
             </a>
-            <a id="drawOnCanvasButton" href="#" onclick="redo()" class="btn" style="background-color: #81939D;">
+            <a id="redoButton" href="#" onclick="redo()" class="btn editPhotoButtons" >
               <i class="material-icons center">redo</i>
             </a>
-            <a id="colorButton" href="#" onclick="colorInput.click()" class="btn" style="background-color: #81939D;">
+            <a id="colorButton" href="#" onclick="colorInput.click()" class="btn editPhotoButtons" >
               <i class="material-icons center">color_lens</i>
             </a>
-            <a id="filterButton" href="#" class="btn" onclick="addFilter()" style="background-color: #81939D;">
+            <a id="filterButton" href="#" class="btn editPhotoButtons" onclick="addFilter()" >
               <i class="material-icons center">filter</i>
             </a>
           </div>
