@@ -197,23 +197,23 @@
             <a id="addText_btn" href="#" onclick="Addtext()" class="btn editPhotoButtons">
               <span>Add Text</span>
             </a>
-            <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn tooltipped editPhotoButtons" data-position="bottom" data-tooltip="removes your object"> 
-              <i class="material-icons center "> delete</i>
-            </a>
-            <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn tooltipped" data-position="bottom" style="background-color: #81939D; margin-bottom: 5px;" data-tooltip="click to toggle the ability to draw">
+            <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn" style="background-color: #81939D; margin-bottom: 5px;" >
               <i class="material-icons center">brush</i>
             </a>
-            <a id="undoButton" href="#" onclick="undo()" class="btn tooltipped editPhotoButtons" data-position="bottom" data-enterDelay="550" data-tooltip="undo your most recent change" >
+            <a id="colorButton" href="#" onclick="colorInput.click()" class="btn editPhotoButtons" >
+              <i class="material-icons center">color_lens</i>
+            </a>
+            <a id="filterButton" href="#" class="btn editPhotoButtons" onclick="toggleGrayScale()" >
+              <i id="grayScaleIcon" class="material-icons center">invert_colors</i>
+            </a>
+            <a id="undoButton" href="#" onclick="undo()" class="btn editPhotoButtons" >
               <i class="material-icons center">undo</i>
             </a>
             <a id="redoButton" href="#" onclick="redo()" class="btn tooltipped editPhotoButtons" data-position="bottom" data-tooltip="redo your changes">
               <i class="material-icons center">redo</i>
             </a>
-            <a id="colorButton" href="#" onclick="colorInput.click()" class="btn tooltipped editPhotoButtons" data-position="bottom" data-tooltip="Change color">
-              <i class="material-icons center">color_lens</i>
-            </a>
-            <a id="filterButton" href="#" class="btn tooltipped editPhotoButtons" onclick="addFilter()" data-position="bottom" data-tooltip="removes your object">
-              <i class="material-icons center">filter</i>
+            <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn editPhotoButtons"> 
+              <i class="material-icons center">delete</i>
             </a>
           </div>
         </div>
@@ -227,12 +227,13 @@
     <!-- The Modal -->
     <div id="modalPreview" class="modall">
       <img  class="modall-content"id="img01">
-      
-      <span class="close">&times;</span>   <!-- The Close Button -->
+      <span class="close">&times;</span>
+      <h5 class="caption" id="caption"></h5>
+      <h6 class="caption" id="caption1"></h6>
     </div>
 
 
-    <div class="row">
+    <div class="row" id="table">
       <div class="col s12 m6 l4" id="duplicater0">
         <div class="card medium hoverable" style="background-color: #f7f7f7;">
           <!-- size er meget vigtig eller fucker alt -->
@@ -258,12 +259,13 @@
               <textarea class="noborder materialize-textarea" 
               placeholder="Description" 
               cols="35"
+              rows="2"
               id="imageDesc"
               ></textarea>  
           </div>
           </div>
-          <a href="#" class="deletebtn" onclick="removeCard(this)">
-            <i id="trashCan" class="material-icons">delete</i>
+          <a href="#" class="deletebtn">
+            <i id="trashCan0" onclick="removeCard(this.id)" class="material-icons trashCanClass">delete</i>
           </a>
         </div>
       </div>

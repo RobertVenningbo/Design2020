@@ -180,7 +180,7 @@
   }
   
   /* Add Animation - Zoom in the Modal */
-  .modall-content{
+  .modall-content, .caption{
     animation-name: zoom;
     animation-duration: 0.6s;
   }
@@ -211,7 +211,6 @@
     color: black;
     border: lightgrey;
     top: 5px;
-    left: 255px;
 }
   /* The Close Button */
 .close {
@@ -231,11 +230,22 @@
     cursor: pointer;
   }
 
-  #trashCan{
+  .trashCanClass{
       color: #81939D;
       opacity: 0.6;
   }
 
-  #trashCan:hover{
+  .trashCanClass:hover{
       opacity: 0.9;
+  }
+
+  .caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 50px !important;
   }
