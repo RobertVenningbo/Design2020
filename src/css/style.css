@@ -122,6 +122,9 @@
         }
     }
 
+
+
+
     /* Style the Image Used to Trigger the Modal */
 #myImg {
     border-radius: 5px;
@@ -135,7 +138,7 @@
   .modall {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 999; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -170,4 +173,22 @@
     .modall-content {
       width: 100%;
     }
+  }
+
+  /* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
   }
