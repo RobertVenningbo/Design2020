@@ -262,7 +262,6 @@ function drag(ev) {
 }
 
 var modal = document.getElementById("modalPreview")
- //inspireret af https://www.w3schools.com/howto/howto_css_modal_images.asp (IKKE ALT ER TAGET DERFRA)
 function show(event){
   event.preventDefault();
   var target = event.target; //billedet man klikker på
