@@ -180,7 +180,7 @@
   }
   
   /* Add Animation - Zoom in the Modal */
-  .modall-content{
+  .modall-content, .caption{
     animation-name: zoom;
     animation-duration: 0.6s;
   }
@@ -237,4 +237,15 @@
 
   #trashCan:hover{
       opacity: 0.9;
+  }
+
+  .caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 50px !important;
   }
