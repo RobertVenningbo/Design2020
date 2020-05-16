@@ -242,11 +242,11 @@ Style the Image Used to Trigger the Modal #myImg {
   cursor: pointer;
 }
 
-#trashCan {
+.trashCanClass {
   color: #81939d;
   opacity: 0.6;
 }
 
-#trashCan:hover {
+.trashCanClass:hover {
   opacity: 0.9;
 }
