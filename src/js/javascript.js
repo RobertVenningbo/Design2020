@@ -332,3 +332,9 @@ function removeCard(btn) {
     ((btn.parentNode).parentNode).removeChild(btn.parentNode);
   }
 }
+
+//tooltips
+const elemsToolTip = document.querySelectorAll(".tooltipped");
+const instanceTooltip = M.Tooltip.init(elemsToolTip, {
+  enterDelay: 1000
+})
