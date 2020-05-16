@@ -325,9 +325,3 @@ textarea.onkeydown = function () {
   }
   textarea.value = lines.slice(0, limit).join("\n");
 };
-
-function removeCard(btn) {
-  if(document.getElementsByClassName("card").length > 1) {
-    ((btn.parentNode).parentNode).removeChild(btn.parentNode);
-  }
-}
