@@ -237,14 +237,22 @@ function toggleGrayScale(){
 */
 
 function duplicate() {
-  var original = document.getElementById("duplicater" + (i - 1));
+  var original = null;
+  for (let index = 0; index < 1000; index++) { 
+    original = document.getElementById("duplicater" + (index));
+    if(original != null){
+      break;
+    }
+  }
+  
+  //var original = document.getElementById("duplicater" + (i - 1));
   var clone = original.cloneNode(true); // "deep" clone
 
   clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
   clone.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
 
   clone.children[0].children[1].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
-  clone.children[0].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
+  clone.children[0].children[1].children[0].id = "pic-title" + i; //Så consolen ikke brokker sig over elementer med samme id.
   clone.children[0].children[2].children[0].id = "trashCan" + i;
   clone.id = "duplicater" + i; // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + i;
@@ -361,5 +369,15 @@ function updateRow() {
     console.log(document.getElementById("table").children[i]);
 
   }
+}
 
+
+
+function removeCardTest(event){
+  if(document.getElementsByClassName("card").length > 1) {
+  event.preventDefault();
+  var src = event.target;
+  superParent = src.parentNode.parentNode.parentNode;
+  superParent.remove();
+  }
 }
