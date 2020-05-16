@@ -345,11 +345,12 @@ textarea.onkeydown = function () {
 function removeCard(id) {
   if(document.getElementsByClassName("card").length > 1) {
    // ((btn.parentNode).parentNode).removeChild(btn.parentNode);
-    for(var i = 0; i < document.getElementById("table").children.length; i ++) {
+    for(var i = 0; i <= document.getElementById("table").children.length; i ++) {
       if(id == "trashCan" + i) {
       
       document.getElementById("table").children[i].remove();
       }
+      
     }
   }
 }
