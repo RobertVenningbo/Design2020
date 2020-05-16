@@ -63,7 +63,7 @@ var imgHeight;
 var imgWidth;
 
 function setBackgroundImage(input) {
-  canvas.setWidth(500);
+  canvas.setWidth(600);
   canvas.setHeight(500);
   document.getElementById("pictureText").value = "";
   canvas.clear();
@@ -101,6 +101,8 @@ function fitPictureToCanvas(img){
     fitResponsiveCanvas();
     scalePictureToWidth(currentImage);
   }
+  this.document.getElementById("pictureText").style.width= this.document.getElementById("C").style.width;
+  document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 }
 
 function scalePictureToWidth(img) {
@@ -149,12 +151,13 @@ window.onresize = (event) => {
     scalePictureToWidth(currentImage);
   }
   this.document.getElementById("pictureText").style.width= this.document.getElementById("C").style.width;
+  document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 };
 
 function fitResponsiveCanvas() {
   // canvas dimensions
   let canvasSize = {
-    width: 500,
+    width: 600,
   };
   // canvas container dimensions
   let containerSize = {
