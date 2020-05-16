@@ -31,6 +31,15 @@
     font-weight: bold;
 }
 
+.editPhotoButtons{
+    background-color: #81939D!important;
+    margin-bottom: 5px;
+}
+
+#addText_btn{
+    width: 104px!important;
+}
+
 .myImg:hover {opacity: 0.7;}
 
     Style the Image Used to Trigger the Modal
@@ -113,6 +122,9 @@
         }
     }
 
+
+
+
     /* Style the Image Used to Trigger the Modal */
 #myImg {
     border-radius: 5px;
@@ -126,7 +138,7 @@
   .modall {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 999; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -180,18 +192,3 @@
     text-decoration: none;
     cursor: pointer;
   }
-.cont {
-    position: relative!important;
-}
-
-.cardimg {
-    width:100!important;
-    height: auto!important;
-}
-
-.deletebtn {
-    position: absolute!important;
-    color: black!important;
-    border: lightgrey!important;
-    top: 5px!important;
-}

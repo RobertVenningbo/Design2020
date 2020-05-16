@@ -44,6 +44,7 @@
     <input 
     type="color"
     id="colorInput" 
+    value="#000000"
     />
   </div>
 
@@ -125,17 +126,26 @@
 
         <ul>
           <i class="material-icons left firstIndent iconFontSize15">cached</i>
-          <li class="botMargin">How do I swap pictures?</li>
+          <li class="botMargin">How do I swap photo?</li>
           <p class="secondIndent botMargin">
             To swap photos, simply select the picture you'd like to swap, and hold in your cursor on a given picture and drag it over the picture you'd like to swap with.
           </p>
         </ul>
 
         <ul>
-          <i class="material-icons left firstIndent iconFontSize15">edit</i>
-          <li class="botMargin">How do I edit pictures?</li>
+          <i class="material-icons left firstIndent iconFontSize15">insert_photo</i>
+          <li class="botMargin">How do I preview a photo?</li>
           <p class="secondIndent botMargin">
-           To edit a given photo, simply click on the photo and a new pop-up will appear, where there's different kind of buttons to edit your picture with. If happy with the result click "upload", otherwise click "cancel" to cancel.
+            Click on the photo you'd like to preview.
+            To close the preview click on the background or click the cross in the top right corner.
+          </p>
+        </ul>
+
+        <ul>
+          <i class="material-icons left firstIndent iconFontSize15">edit</i>
+          <li class="botMargin">How do I edit photo?</li>
+          <p class="secondIndent botMargin">
+           To edit a given photo, simply upload a photo and a new pop-up will appear, where there's different kind of buttons to edit your picture with. If happy with the result click "upload", otherwise click "cancel" to cancel.
           </p>
         </ul>
 
@@ -143,7 +153,7 @@
           <i class="material-icons left firstIndent iconFontSize15">color_lens</i>
           <li class="botMargin">How do I change theme?</li>
           <p class="secondIndent botMargin">
-            To change theme find the "Change Theme" button in the navigation bar, whereafter you have 4 themes to choose between.
+            To change theme find the "Themes" button in the navigation bar, whereafter you have 4 themes to choose from.
           </p>
         </ul>
 
@@ -181,29 +191,31 @@
       <div class="modal-content">
         <h4>Edit photo</h4>
         <div class="container" id="canvasContainer">
-          <canvas id="C" height="500" width="500"></canvas>
+          <canvas id="C" height="500" width="600"></canvas>
           <input id="pictureText" type="text" placeholder="Write your caption here.." onsubmit="Addtext()">
-          <a id="addText_btn" href="#" onclick="Addtext()" class="btn" style="background-color: #81939D;">
-            <span>Add Text</span>
-          </a>
-          <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn" style="background-color: #81939D;"> <!--TODO lav det her til en style klasee-->
-            <i class="material-icons center">delete</i>
-          </a>
-          <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn" style="background-color: #81939D;">
-            <i class="material-icons center">brush</i>
-          </a>
-          <a id="undoButton" href="#" onclick="undo()" class="btn" style="background-color: #81939D;">
-            <i class="material-icons center">undo</i>
-          </a>
-          <a id="drawOnCanvasButton" href="#" onclick="redo()" class="btn" style="background-color: #81939D;">
-            <i class="material-icons center">redo</i>
-          </a>
-          <a id="colorButton" href="#" onclick="colorInput.click()" class="btn" style="background-color: #81939D;">
-            <i class="material-icons center">color_lens</i>
-          </a>
-          <a id="filterButton" href="#" class="btn" onclick="addFilter()" style="background-color: #81939D;">
-            <i class="material-icons center">filter</i>
-          </a>
+          <div id="canvasButtons">
+            <a id="addText_btn" href="#" onclick="Addtext()" class="btn editPhotoButtons" width="105.4px">
+              <span>Add Text</span>
+            </a>
+            <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn editPhotoButtons"> 
+              <i class="material-icons center">delete</i>
+            </a>
+            <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn" style="background-color: #81939D; margin-bottom: 5px;" >
+              <i class="material-icons center">brush</i>
+            </a>
+            <a id="undoButton" href="#" onclick="undo()" class="btn editPhotoButtons" >
+              <i class="material-icons center">undo</i>
+            </a>
+            <a id="redoButton" href="#" onclick="redo()" class="btn editPhotoButtons" >
+              <i class="material-icons center">redo</i>
+            </a>
+            <a id="colorButton" href="#" onclick="colorInput.click()" class="btn editPhotoButtons" >
+              <i class="material-icons center">color_lens</i>
+            </a>
+            <a id="filterButton" href="#" class="btn editPhotoButtons" onclick="addFilter()" >
+              <i class="material-icons center">filter</i>
+            </a>
+          </div>
         </div>
       </div>
       <div class="modal-fixed-footer right">
@@ -215,6 +227,8 @@
     <!-- The Modal -->
     <div id="modalPreview" class="modall">
       <img  class="modall-content"id="img01">
+      
+      <span class="close">&times;</span>   <!-- The Close Button -->
     </div>
 
 
