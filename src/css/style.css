@@ -176,19 +176,19 @@
   }
 
 .cont {
-    position: relative!important;
+    position: relative;
 }
 
 .cardimg {
-    width:100!important;
-    height: auto!important;
+    width:100;
+    height: auto;
 }
 
 .deletebtn {
-    position: absolute!important;
-    color: black!important;
-    border: lightgrey!important;
-    top: 5px!important;
+    position: absolute;
+    color: black;
+    border: lightgrey;
+    top: 5px;
 }
   /* The Close Button */
 .close {
@@ -206,4 +206,13 @@
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  #trashCan{
+      color: #81939D;
+      opacity: 0.6;
+  }
+
+  #trashCan:hover{
+      opacity: 0.9;
   }
