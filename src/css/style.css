@@ -230,12 +230,12 @@
     cursor: pointer;
   }
 
-  #trashCan{
+  .trashCan{
       color: #81939D;
       opacity: 0.6;
   }
 
-  #trashCan:hover{
+  .trashCan:hover{
       opacity: 0.9;
   }
 

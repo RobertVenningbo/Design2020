@@ -236,6 +236,7 @@ function duplicate() {
 
   clone.children[0].children[1].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
   clone.children[0].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
+  clone.children[0].children[2].children[0].id = "trashCan" + i; //Så consolen ikke brokker sig over elementer med samme id.
   clone.id = "duplicater" + i; // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + i;
   //let child = clone.querySelector("img");
