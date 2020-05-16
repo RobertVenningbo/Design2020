@@ -220,21 +220,23 @@
 
     <div class="row">
       <div class="col s12 m6 l4" id="duplicater0">
-        <div class="card medium hoverable cont" style="background-color: #f7f7f7;">
+        <div class="card medium hoverable" style="background-color: #f7f7f7;">
           <!-- size er meget vigtig eller fucker alt -->
           <div
             class="card-image"
             ondrop="drop(event)"
-            ondragover="allowDrop(event)">
+            ondragover="allowDrop(event)"
+          >
             <img
-              class="myImg modal-trigger cardimg"
+              class="myImg modal-trigger"
               id="drag0"
               draggable="true"
               ondragstart="drag(event)"
               href="#modalPreview"
               onclick="show(event)"
               src="https://i0.wp.com/crochetbysippe.dk/wp-content/uploads/2018/10/placeholder-01.jpg?resize=300%2C169&ssl=1"
-              alt=""/>
+              alt=""
+            />
           </div>
           <div class="card-content" id="text-div" name="text-div">
             <input class="card-title" id="pic-title" placeholder="Title"></input>
@@ -244,12 +246,8 @@
               cols="35"
               id="imageDesc"
               ></textarea>  
-          
           </div>
           </div>
-          <a href="#" class="deletebtn" onclick="removeCard(this)">
-            <i class="material-icons">delete</i>
-          </a>
         </div>
       </div>
     </div>

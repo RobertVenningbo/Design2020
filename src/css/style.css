@@ -162,19 +162,3 @@
       width: 100%;
     }
   }
-
-.cont {
-    position: relative!important;
-}
-
-.cardimg {
-    width:100!important;
-    height: auto!important;
-}
-
-.deletebtn {
-    position: absolute!important;
-    color: black!important;
-    border: lightgrey!important;
-    top: 5px!important;
-}
