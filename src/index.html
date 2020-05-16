@@ -207,25 +207,25 @@
           <canvas id="C" height="500" width="600"></canvas>
           <input id="pictureText" type="text" placeholder="Write your caption here.." onsubmit="Addtext()">
           <div id="canvasButtons" class="center-on-xs-only">
-            <a id="addText_btn" href="#" onclick="Addtext()" class="btn editPhotoButtons">
+            <a id="addText_btn" href="#" onclick="Addtext()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Click to add the text in the inputfield from above to the picture">
               <span>Add Text</span>
             </a>
-            <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn" style="background-color: #81939D; margin-bottom: 5px;" >
+            <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn tooltipped"style="background-color: #81939D; margin-bottom: 5px;" data-position="bottom" data-tooltip="Click to toggle the ability to draw" >
               <i class="material-icons center">brush</i>
             </a>
-            <a id="colorButton" href="#" onclick="colorInput.click()" class="btn editPhotoButtons" >
+            <a id="colorButton" href="#" onclick="colorInput.click()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Change color">
               <i class="material-icons center">color_lens</i>
             </a>
-            <a id="filterButton" href="#" class="btn editPhotoButtons" onclick="toggleGrayScale()" >
+            <a id="filterButton" href="#" class="btn editPhotoButtons tooltipped" onclick="toggleGrayScale()" data-position="bottom" data-tooltip="Toggle black and white">
               <i id="grayScaleIcon" class="material-icons center">invert_colors</i>
             </a>
-            <a id="undoButton" href="#" onclick="undo()" class="btn editPhotoButtons" >
+            <a id="undoButton" href="#" onclick="undo()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Undo your most recent change">
               <i class="material-icons center">undo</i>
             </a>
-            <a id="redoButton" href="#" onclick="redo()" class="btn editPhotoButtons" >
+            <a id="redoButton" href="#" onclick="redo()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Redo your changes">
               <i class="material-icons center">redo</i>
             </a>
-            <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn editPhotoButtons"> 
+            <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Removes your selected object"> 
               <i class="material-icons center">delete</i>
             </a>
           </div>
@@ -278,7 +278,7 @@
           </div>
           </div>
           <a href="#" class="deletebtn">
-            <i id="trashCan0" onclick="removeCardTest(event)" class="material-icons trashCanClass">delete</i>
+            <i id="trashCan0" onclick="removeCard(event)" class="material-icons trashCanClass">delete</i>
           </a>
         </div>
       </div>

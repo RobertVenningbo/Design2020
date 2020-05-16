@@ -349,31 +349,8 @@ textarea.onkeydown = function () {
   textarea.value = lines.slice(0, limit).join("\n");
 };
 
-function removeCard(id) {
-  if(document.getElementsByClassName("card").length > 1) {
-    for(var i = 0; i < document.getElementById("table").children.length; i ++) {
-      if(id == "trashCan" + i) {
 
-      document.getElementById("table").children[i].remove();
-      }
-    }
-  }
-}
-
-function updateRow() {
-  for(var i = 0; i < document.getElementById("table").children.length; i++) {
-    if(document.getElementById("table").children[i] == null) {
-      var temp = document.getElementById("table").children[i];
-      document.getElementById("table").children[i+1] = temp;
-    }
-    console.log(document.getElementById("table").children[i]);
-
-  }
-}
-
-
-
-function removeCardTest(event){
+function removeCard(event){
   if(document.getElementsByClassName("card").length > 1) {
   event.preventDefault();
   var src = event.target;
@@ -381,3 +358,9 @@ function removeCardTest(event){
   superParent.remove();
   }
 }
+
+//tooltips
+const elemsToolTip = document.querySelectorAll(".tooltipped");
+const instanceTooltip = M.Tooltip.init(elemsToolTip, {
+  enterDelay: 600
+}) 
