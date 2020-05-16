@@ -73,21 +73,9 @@ function setBackgroundImage(input) {
       reader.onload = (e) => {
         fabric.Image.fromURL(reader.result, function (img) {
           currentImage = img;
-          if (img.height > img.width) {
-            scalePictureToHeight(img);
-          } else {
-            scalePictureToWidth(img);
-          }
-          canvas.setBackgroundImage(img);
-          canvas.requestRenderAll();
-
+          
           document.getElementById("modalTriggerButton").click();
-          if (
-            document.getElementById("canvasContainer").offsetWidth < canvasWidth
-          ) {
-            fitResponsiveCanvas();
-            scalePictureToWidth(currentImage);
-          }
+          fitPictureToCanvas(img);
         });
         resolve(e.target.result);
       };
@@ -99,6 +87,20 @@ function setBackgroundImage(input) {
       reject();
     }
   });
+}
+
+function fitPictureToCanvas(img){
+  if (img.height > img.width) {
+    scalePictureToHeight(img);
+  } else {
+    scalePictureToWidth(img);
+  }
+  canvas.setBackgroundImage(img);
+  canvas.requestRenderAll();
+  if (document.getElementById("canvasContainer").offsetWidth < canvasWidth) {
+    fitResponsiveCanvas();
+    scalePictureToWidth(currentImage);
+  }
 }
 
 function scalePictureToWidth(img) {
@@ -177,14 +179,11 @@ function Addtext() {
   document.getElementById("pictureText").value = "";
 }
 
-document
-  .getElementById("pictureText")
-  .addEventListener("keyup", function (event) {
+document.getElementById("pictureText").addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
       Addtext();
     }
   });
-
 /***********************************************\ 
 | Taken from https://codepen.io/Jadev/pen/mLNzmB |
 \***********************************************/
@@ -211,6 +210,15 @@ function redo() {
     isRedoing = true;
     canvas.add(h.pop());
   }
+}
+
+function addFilter(){
+  fabric.textureSize = 4096;
+  currentImage.filters.push(new fabric.Image.filters.Grayscale());
+
+  // apply filters and re-render canvas when done
+  currentImage.applyFilters();
+  fitPictureToCanvas(currentImage);
 }
 
 /*function filePreview() {
