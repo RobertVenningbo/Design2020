@@ -237,14 +237,22 @@ function toggleGrayScale(){
 */
 
 function duplicate() {
-  var original = document.getElementById("duplicater" + (i - 1));
+  var original = null;
+  for (let index = 0; index < 1000; index++) { 
+    original = document.getElementById("duplicater" + (index));
+    if(original != null){
+      break;
+    }
+  }
+  
+  //var original = document.getElementById("duplicater" + (i - 1));
   var clone = original.cloneNode(true); // "deep" clone
 
   clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
   clone.children[0].children[1].children[0].value = ""; //Sætter 'title' til empty string
 
   clone.children[0].children[1].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
-  clone.children[0].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
+  clone.children[0].children[1].children[0].id = "pic-title" + i; //Så consolen ikke brokker sig over elementer med samme id.
   clone.children[0].children[2].children[0].id = "trashCan" + i;
   clone.id = "duplicater" + i; // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + i;
@@ -341,25 +349,18 @@ textarea.onkeydown = function () {
   textarea.value = lines.slice(0, limit).join("\n");
 };
 
-function removeCard(id) {
+
+function removeCard(event){
   if(document.getElementsByClassName("card").length > 1) {
-    for(var i = 0; i <= document.getElementById("table").children.length; i ++) {
-      if(id == "trashCan" + i) {
-
-      document.getElementById("table").children[i].remove();
-      }
-    }
+  event.preventDefault();
+  var src = event.target;
+  superParent = src.parentNode.parentNode.parentNode;
+  superParent.remove();
   }
 }
 
-function updateRow() {
-  for(var i = 0; i < document.getElementById("table").children.length; i++) {
-    if(document.getElementById("table").children[i] == null) {
-      var temp = document.getElementById("table").children[i];
-      document.getElementById("table").children[i+1] = temp;
-    }
-    console.log(document.getElementById("table").children[i]);
-
-  }
-
-}
+//tooltips
+const elemsToolTip = document.querySelectorAll(".tooltipped");
+const instanceTooltip = M.Tooltip.init(elemsToolTip, {
+  enterDelay: 600
+}) 
