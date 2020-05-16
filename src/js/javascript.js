@@ -329,6 +329,20 @@ textarea.onkeydown = function () {
 
 function removeCard(btn) {
   if(document.getElementsByClassName("card").length > 1) {
-    ((btn.parentNode).parentNode).removeChild(btn.parentNode);
+    console.log((btn.parentNode).parentNode);
+   // ((btn.parentNode).parentNode).removeChild(btn.parentNode);
+    document.getElementById("table").children[0].remove();
   }
+}
+
+function updateRow() {
+  for(var i = 0; i < document.getElementById("table").children.length; i++) {
+    if(document.getElementById("table").children[i] == null) {
+      var temp = document.getElementById("table").children[i];
+      document.getElementById("table").children[i+1] = temp;
+    }
+    console.log(document.getElementById("table").children[i]);
+
+  }
+
 }
