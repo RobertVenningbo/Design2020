@@ -40,6 +40,28 @@
     width: 104px!important;
 }
 
+@media only screen and (min-width: 581px){
+    #addText_btn{
+        width: 105px!important;
+    }
+}
+
+@media only screen and (min-width: 992px){
+    #addText_btn{
+        width: 106px!important;
+    }
+}
+
+.center-on-xs-only {
+    text-align: center;
+}
+
+@media only screen and (min-width : 431px) {
+    .center-on-xs-only {
+        text-align: left;
+    }
+}
+
 .myImg:hover {opacity: 0.7;}
 
     Style the Image Used to Trigger the Modal
@@ -55,7 +77,7 @@
     .modall {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
+        z-index: 999; /* Sit on top */
         padding-top: 100px; /* Location of the box */
         left: 0;
         top: 0;
@@ -192,3 +214,19 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+.cont {
+    position: relative!important;
+}
+
+.cardimg {
+    width:100!important;
+    height: auto!important;
+}
+
+.deletebtn {
+    position: absolute!important;
+    color: black!important;
+    border: lightgrey!important;
+    top: 5px!important;
+}

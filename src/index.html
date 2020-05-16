@@ -193,8 +193,8 @@
         <div class="container" id="canvasContainer">
           <canvas id="C" height="500" width="600"></canvas>
           <input id="pictureText" type="text" placeholder="Write your caption here.." onsubmit="Addtext()">
-          <div id="canvasButtons">
-            <a id="addText_btn" href="#" onclick="Addtext()" class="btn editPhotoButtons" width="105.4px">
+          <div id="canvasButtons" class="center-on-xs-only">
+            <a id="addText_btn" href="#" onclick="Addtext()" class="btn editPhotoButtons">
               <span>Add Text</span>
             </a>
             <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn editPhotoButtons"> 
@@ -262,6 +262,9 @@
               ></textarea>  
           </div>
           </div>
+          <a href="#" class="deletebtn" onclick="removeCard(this)">
+            <i class="material-icons">delete</i>
+          </a>
         </div>
       </div>
     </div>
