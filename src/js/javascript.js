@@ -27,16 +27,6 @@ function chooseFile() {
 }
 
 function filePreview(imgSRC) {
-  /*var img = document.getElementById("imagePreview");
-  img.src = reader.result;
-  img.width = 300;*/
-  /*duplicate();
-  
-  var imageContainer = document.getElementById("duplicater" + i);
-  i++;
-  var img = imageContainer.querySelector("img");
-  img.src = imgSRC;
-  */
   if (i == 0) {
     var imageContainer = document.getElementById("duplicater" + 0);
     var img = imageContainer.querySelector("img");
@@ -56,6 +46,7 @@ function uploadePressed() {
 }
 
 var canvas = new fabric.Canvas("C");
+var currentColor = "#000000";
 var canvasWidth = canvas.width;
 var canvasHeight = canvas.height;
 var currentImage;
@@ -63,10 +54,14 @@ var imgHeight;
 var imgWidth;
 
 function setBackgroundImage(input) {
-  canvas.setWidth(500);
+  canvas.setWidth(600);
   canvas.setHeight(500);
   document.getElementById("pictureText").value = "";
   canvas.clear();
+  currentColor = "#000000";
+  document.getElementById("colorButton").style.color = "#FFFFFF";
+  canvas.isDrawingMode = false;
+  document.getElementById("drawOnCanvasButton").style.backgroundColor = "#81939D"; //reset drawing icon on picture load
   return new Promise((resolve, reject) => {
     if (input.files && input.files[0]) {
       const reader = new FileReader();
@@ -101,6 +96,8 @@ function fitPictureToCanvas(img){
     fitResponsiveCanvas();
     scalePictureToWidth(currentImage);
   }
+  document.getElementById("pictureText").style.width= canvas.width;
+  document.getElementById("canvasButtons").style.width = canvas.width;
 }
 
 function scalePictureToWidth(img) {
@@ -122,21 +119,19 @@ function removeObject() {
 function toggleDrawOnCanvas() {
   if (canvas.isDrawingMode == true) {
     canvas.isDrawingMode = false;
-    document.getElementById("drawOnCanvasButton").style.backgroundColor =
-      "#81939D";
+    document.getElementById("drawOnCanvasButton").style.backgroundColor = "#81939D";
   } else {
     canvas.isDrawingMode = true;
-    document.getElementById("drawOnCanvasButton").style.backgroundColor =
-      "#64727a";
+    document.getElementById("drawOnCanvasButton").style.backgroundColor = "#64727a";
+    canvas.freeDrawingBrush.color = currentColor;
     canvas.freeDrawingBrush.width = 3;
   }
 }
 
-document.getElementById("colorInput").onchange = (event) => {
-  document.getElementById("colorButton").style.color = document.getElementById(
-    "colorInput"
-  ).value;
-  canvas.freeDrawingBrush.color = document.getElementById("colorInput").value;
+colorInput.onchange = (event) => {
+  currentColor = document.getElementById("colorInput").value;
+  canvas.freeDrawingBrush.color = currentColor;
+  document.getElementById("colorButton").style.color = currentColor;
 };
 
 /***********************************************\ 
@@ -146,15 +141,18 @@ document.getElementById("colorInput").onchange = (event) => {
 window.onresize = (event) => {
   if (document.getElementById("canvasContainer").offsetWidth < canvasWidth) {
     fitResponsiveCanvas();
-    scalePictureToWidth(currentImage);
+    if (currentImage != null){
+      scalePictureToWidth(currentImage);
+    }
   }
-  this.document.getElementById("pictureText").style.width= this.document.getElementById("C").style.width;
+  document.getElementById("pictureText").style.width= canvas.width;
+  document.getElementById("canvasButtons").style.width = canvas.width;
 };
 
 function fitResponsiveCanvas() {
   // canvas dimensions
   let canvasSize = {
-    width: 500,
+    width: 600,
   };
   // canvas container dimensions
   let containerSize = {
@@ -170,7 +168,7 @@ function Addtext() {
     new fabric.IText(text, {
       left: 100,
       top: 100,
-      fill: document.getElementById("colorInput").value,
+      fill: currentColor,
       stroke: "#000000",
       strokeWidth: 0.3,
       fontSize: 35,
@@ -215,8 +213,6 @@ function redo() {
 function addFilter(){
   fabric.textureSize = 4096;
   currentImage.filters.push(new fabric.Image.filters.Grayscale());
-
-  // apply filters and re-render canvas when done
   currentImage.applyFilters();
   fitPictureToCanvas(currentImage);
 }
@@ -272,6 +268,13 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
 
 function drop(ev) {
@@ -297,8 +300,8 @@ var textarea = document.getElementById("imageDesc");
 var spaces = textarea.getAttribute("cols");
 
 textarea.onkeydown = function () {
-  /****************************************************************************\ 
-| Taken from https://stackoverflow.com/questions/22731394/max-lines-textarea |
+ /****************************************************************************\ 
+| Taken from https://stackoverflow.com/questions/22731394/max-lines-textarea  |
 \****************************************************************************/
 
   var lines = textarea.value.split("\n");
