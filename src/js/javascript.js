@@ -49,6 +49,7 @@ var canvas = new fabric.Canvas("C");
 var currentColor = "#000000";
 var canvasWidth = canvas.width;
 var canvasHeight = canvas.height;
+var grayScale = false;
 var currentImage;
 var imgHeight;
 var imgWidth;
@@ -84,11 +85,9 @@ function setBackgroundImage(input) {
 }
 
 function fitPictureToCanvas(img){
-  if (img.height > img.width) {
-    scalePictureToHeight(img);
-  } else {
+  
     scalePictureToWidth(img);
-  }
+  
   canvas.setBackgroundImage(img);
   canvas.requestRenderAll();
   if (document.getElementById("canvasContainer").offsetWidth < canvasWidth) {
@@ -144,7 +143,6 @@ window.onresize = (event) => {
       scalePictureToWidth(currentImage);
     }
   }
-  document.getElementById("addText_btn").style.width = document.getElementById("undoButton").style.width*2+4;
   document.getElementById("pictureText").style.width= document.getElementById("C").style.width;
   document.getElementById("canvasButtons").style.width = document.getElementById("C").style.width;
 };
@@ -210,11 +208,20 @@ function redo() {
   }
 }
 
-function addFilter(){
-  fabric.textureSize = 4096;
-  currentImage.filters.push(new fabric.Image.filters.Grayscale());
-  currentImage.applyFilters();
-  fitPictureToCanvas(currentImage);
+function toggleGrayScale(){
+  if(grayScale == true){
+    currentImage.filters=[];
+    currentImage.applyFilters();
+    fitPictureToCanvas(currentImage);
+    grayScale = false;
+  } else {
+    fabric.textureSize = 4096;
+    currentImage.filters.push(new fabric.Image.filters.Grayscale());
+    var tmpImage = currentImage;
+    tmpImage.applyFilters();
+    fitPictureToCanvas(tmpImage);
+    grayScale = true;
+  }
 }
 
 /*function filePreview() {
@@ -257,10 +264,15 @@ var modal = document.getElementById("modalPreview")
  //inspireret af https://www.w3schools.com/howto/howto_css_modal_images.asp (IKKE ALT ER TAGET DERFRA)
 function show(event){
   event.preventDefault();
-  var target = event.target; //billedets URL man klikker på
+  var target = event.target; //billedet man klikker på
   var modalImg = document.getElementById("img01"); // billedet man overskriver
    modalImg.src = target.src; //datatransfer
+   var captionText = document.getElementById("caption");
+   var descText = document.getElementById("caption1");
+   captionText.innerHTML = target.parentNode.parentNode.children[1].children[0].value; //henter billedets "title"-tekst
+   descText.innerHTML = target.parentNode.parentNode.children[1].children[1].children[0].value;
    modal.style.display = "block";
+   // document.getElementById("caption").value; //ændre
 }
 
 window.onclick = function(event) {
