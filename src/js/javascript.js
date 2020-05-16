@@ -340,11 +340,15 @@ textarea.onkeydown = function () {
   textarea.value = lines.slice(0, limit).join("\n");
 };
 
-function removeCard(btn) {
+function removeCard(id) {
   if(document.getElementsByClassName("card").length > 1) {
-    console.log((btn.parentNode).parentNode);
    // ((btn.parentNode).parentNode).removeChild(btn.parentNode);
-    document.getElementById("table").children[0].remove();
+    for(var i = 0; i < document.getElementById("table").children.length; i ++) {
+      if(id == "trashCan" + i) {
+      
+      document.getElementById("table").children[i].remove();
+      }
+    }
   }
 }
 
