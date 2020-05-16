@@ -245,6 +245,7 @@ function duplicate() {
 
   clone.children[0].children[1].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
   clone.children[0].children[1].children[0].id = "imageDesc" + i; //Så consolen ikke brokker sig over elementer med samme id.
+  clone.children[0].children[2].children[0].id = "trashCan" + i; //Så consolen ikke brokker sig over elementer med samme id.
   clone.id = "duplicater" + i; // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + i;
   //let child = clone.querySelector("img");
@@ -343,6 +344,20 @@ textarea.onkeydown = function () {
 
 function removeCard(btn) {
   if(document.getElementsByClassName("card").length > 1) {
-    ((btn.parentNode).parentNode).removeChild(btn.parentNode);
+    console.log((btn.parentNode).parentNode);
+   // ((btn.parentNode).parentNode).removeChild(btn.parentNode);
+    document.getElementById("table").children[0].remove();
   }
+}
+
+function updateRow() {
+  for(var i = 0; i < document.getElementById("table").children.length; i++) {
+    if(document.getElementById("table").children[i] == null) {
+      var temp = document.getElementById("table").children[i];
+      document.getElementById("table").children[i+1] = temp;
+    }
+    console.log(document.getElementById("table").children[i]);
+
+  }
+
 }
