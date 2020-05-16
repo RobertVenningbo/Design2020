@@ -256,10 +256,15 @@ var modal = document.getElementById("modalPreview")
  //inspireret af https://www.w3schools.com/howto/howto_css_modal_images.asp (IKKE ALT ER TAGET DERFRA)
 function show(event){
   event.preventDefault();
-  var target = event.target; //billedets URL man klikker på
+  var target = event.target; //billedet man klikker på
   var modalImg = document.getElementById("img01"); // billedet man overskriver
    modalImg.src = target.src; //datatransfer
+   var captionText = document.getElementById("caption");
+   var descText = document.getElementById("caption1");
+   captionText.innerHTML = target.parentNode.parentNode.children[1].children[0].value; //henter billedets "title"-tekst
+   descText.innerHTML = target.parentNode.parentNode.children[1].children[1].children[0].value;
    modal.style.display = "block";
+   // document.getElementById("caption").value; //ændre
 }
 
 window.onclick = function(event) {
