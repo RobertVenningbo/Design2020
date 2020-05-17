@@ -112,7 +112,7 @@ function toggleDrawOnCanvas() {
 }
 
 color_input.onchange = (event) => {
-  currentColor = document.getElementById("colorInput").value;
+  currentColor = document.getElementById("color_input").value;
   canvas.freeDrawingBrush.color = currentColor;
   document.getElementById("color-button").style.color = currentColor;
 };
