@@ -344,10 +344,16 @@ textarea.onkeydown = function () {
 
 function removeCard(event){
   if(document.getElementsByClassName("card").length > 1) {
-  event.preventDefault();
-  var src = event.target;
-  superParent = src.parentNode.parentNode.parentNode;
-  superParent.remove();
+    if (window.confirm("Are you sure you want to delete this picture?")) { 
+      event.preventDefault();
+      var src = event.target;
+      superParent = src.parentNode.parentNode.parentNode;
+      superParent.remove();
+    }else{
+      return;
+    }
+  }else{
+    alert("Unfortunately you can't delete a picture if only one picture is left.")
   }
 }
 
