@@ -227,7 +227,6 @@ function duplicate() {
     }
   }
   
-  //var original = document.getElementById("duplicater" + (i - 1));
   var clone = original.cloneNode(true); // "deep" clone
 
   clone.children[0].children[1].children[1].children[0].value = ""; //Sætter 'description' til empty string
@@ -238,9 +237,6 @@ function duplicate() {
   clone.children[0].children[2].children[0].id = "trashCan" + i;
   clone.id = "duplicater" + i; // there can only be one element with an ID
   clone.querySelector("img").id = "drag" + i;
-  //let child = clone.querySelector("img");
-  //child.addEventListener("click", chooseFile());
-  //onclick = chooseFile(); // event handlers are not cloned
 
   original.parentNode.appendChild(clone);
 }
@@ -288,7 +284,6 @@ function show(event){
    captionText.innerHTML = target.parentNode.parentNode.children[1].children[0].value; //henter billedets "title"-tekst
    descText.innerHTML = target.parentNode.parentNode.children[1].children[1].children[0].value; //henter billedets "description"-tekst
    modal.style.display = "block";
-   // document.getElementById("caption").value; //ændre
 }
 
 window.onclick = function(event) {

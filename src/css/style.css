@@ -37,6 +37,8 @@
     background-color: #81939D!important;
 }
 
+/*Made by: Oskar*/
+
 .bot-margin-small{
     margin-bottom: 5px;
 }
@@ -57,10 +59,6 @@
     }
 }
 
-
-
-/*Made by: Oskar*/
-
 .center-on-xs-only {
     text-align: center;
 }
@@ -71,106 +69,21 @@
     }
 }
 
-.my-img:hover {opacity: 0.7;}
-
-    Style the Image Used to Trigger the Modal
-    #my-img {
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    
-    #my-img:hover {opacity: 0.7;}
-    
-    /* The Modal (background) */
-    .modall {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 999; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-    }
-    
-    /* Modal Content (Image) */
-    .modall-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-    }
-    
-
-
-    /*Made by: Philip*/
-
-    /* Caption of Modal Image (Image Text) - Same Width as the Image */
-    #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: #ccc;
-        padding: 10px 0;
-        height: 150px;
-    }
-    
-    /* Add Animation - Zoom in the Modal */
-    .modall-content, #caption {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-    }
-    
-    @keyframes zoom {
-        from {transform:scale(0)}
-        to {transform:scale(1)}
-    }
-    
-    /* The Close Button */
-    .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-    
-    .close:hover,
-    .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    
-    /* 100% Image Width on Smaller Screens */
-    @media only screen and (max-width: 700px){
-        .modall-content {
-        width: 100%;
-        }
-    }
-
-    /*Made by: Robert*/
-
-
     /* Style the Image Used to Trigger the Modal */
-#my-img {
+.my-img {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
-  }
+}
   
-  #my-img:hover {opacity: 0.7;}
+.my-img:hover {
+    opacity: 0.7;
+}
   
+    /*Made by: Philip*/
+
   /* The Modal (background) */
-  .modall {
+.modall {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 999; /* Sit on top */
@@ -182,36 +95,35 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-  }
+}
   
   /* Modal Content (Image) */
-  .modall-content {
+.modall-content {
     margin: auto;
     display: block;
     width: 80%;
     max-width: 700px;
-  }
+}
   
   /* Add Animation - Zoom in the Modal */
-  .modall-content, .caption{
+.modall-content, .caption{
     animation-name: zoom;
     animation-duration: 0.6s;
-  }
+}
   
-  @keyframes zoom {
+@keyframes zoom {
     from {transform:scale(0)}
     to {transform:scale(1)}
-  }
+}
 
   /* 100% Image Width on Smaller Screens */
-  @media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px){
     .modall-content {
       width: 100%;
     }
-  }
+}
 
-
-   /*Made by: Thomas*/
+    /*Made by: Robert*/
 
 .cont {
     position: relative;
@@ -228,6 +140,7 @@
     border: lightgrey;
     top: 5px;
 }
+
   /* The Close Button */
 .close {
     position: absolute;
@@ -237,25 +150,27 @@
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
-  }
+}
   
-  .close:hover,
-  .close:focus {
+.close:hover,
+.close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
-  .trash-can{
+ /*Made by: Thomas*/
+
+.trash-can{
       color: #81939D;
       opacity: 0.6;
-  }
+}
 
-  .trash-can:hover{
+.trash-can:hover{
       opacity: 0.9;
-  }
+}
 
-  .caption {
+.caption {
     margin: auto;
     display: block;
     width: 80%;
@@ -264,25 +179,25 @@
     color: #ccc;
     padding: 10px 0;
     height: 50px !important;
-  }
+}
 
-  body{
+body{
     background-color: #F4EDEA;
-  }
+}
 
-  .hidden{
+.hidden{
     height: 0px; 
     overflow: hidden;
-  }
+}
 
-  .color-secondary{
-      background-color: #0FA3B1;
-  }
+.color-secondary{
+    background-color: #0FA3B1;
+}
 
-  .help-icon{
+.help-icon{
     font-size: 50px!important;
-  }
+}
 
-  .help-text{
-      margin-bottom: 40px;
-  }
+.help-text{
+    margin-bottom: 40px;
+}
