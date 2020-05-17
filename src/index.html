@@ -1,53 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
   <link rel="stylesheet" type="text/css" href="css/reset.css" />
-  
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/waltograph" type="text/css" />
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/nimbus-sans-l" type="text/css" />
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/carlito" type="text/css" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-
   <!--Import Google Icon Font-->
-  <link 
-  href="https://fonts.googleapis.com/icon?family=Material+Icons" 
-  rel="stylesheet" 
-  />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <!--Import materialize.css-->
-  <link 
-  type="text/css" 
-  rel="stylesheet" 
-  href="css/materialize.css" 
-  media="screen,projection" 
-  />
+  <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen" />
   <meta charset="UTF-8">
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fotobog</title>
 </head>
 
-<body style="background-color: #F4EDEA;">
-  <!--Invisible submit button :)-->
-  <div style="height: 0px; overflow: hidden;">
-    <input 
-    type="file" 
-    accept="image/*" 
-    multiple="false" 
-    id="fileInput" 
-    name="fileInput"
-    onchange="setBackgroundImage(fileInput)" 
-    />
-    <a id="modalTriggerButton" href="#modal1" class="modal-trigger"></a>
-    <input 
-    type="color"
-    id="colorInput" 
-    value="#000000"
-    />
+<body>
+  <!--Lavet af: Thomas & Oskar-->
+  <!--Invisible submit button-->
+  <div class="hidden">
+    <input type="file" accept="image/*" id="fileInput" name="fileInput" onchange=" setBackgroundImage(fileInput)" />
+    <a id="edit-modal-trigger" href="#edit-modal" class="modal-trigger"></a>
+    <a id="photo-modal-trigger" href="#preview-modal" class="modal-trigger"></a>
+    <input type="color" id="color_input" value="#000000" />
   </div>
 
+  <!--Made by: Philip-->
   <ul id='dropdown-big' class='dropdown-content'>
     <li><a id="0" href="#!" onclick="changeTheme(this.id)">Default</a></li>
     <li class="divider" tabindex="-1"></li>
@@ -55,177 +37,178 @@
     <li class="divider" tabindex="-1"></li>
     <li><a id="2" href="#!" onclick="changeTheme(this.id)">Travel</a></li>
     <li class="divider" tabindex="-1"></li>
-    <li id="3"><a id="3" href="#!" onclick="changeTheme(this.id)">Formal</a></li>
+    <li><a id="3" href="#!" onclick="changeTheme(this.id)">Formal</a></li>
   </ul>
 
   <ul id='dropdown-phone' class='dropdown-content'>
-    <li><a id="0" href="#!" onclick="changeTheme(this.id)">Default</a></li>
+    <li><a id="4" href="#!" onclick="changeTheme(this.id)">Default</a></li>
     <li class="divider" tabindex="-1"></li>
-    <li><a id="1" href="#!" onclick="changeTheme(this.id)">Children</a></li>
+    <li><a id="5" href="#!" onclick="changeTheme(this.id)">Children</a></li>
     <li class="divider" tabindex="-1"></li>
-    <li><a id="2" href="#!" onclick="changeTheme(this.id)">Travel</a></li>
+    <li><a id="6" href="#!" onclick="changeTheme(this.id)">Travel</a></li>
     <li class="divider" tabindex="-1"></li>
-    <li id="3"><a id="3" href="#!" onclick="changeTheme(this.id)">Formal</a></li>
+    <li><a id="7" href="#!" onclick="changeTheme(this.id)">Formal</a></li>
   </ul>
-  
+
+  <!--Made by: Thomas-->
   <div class="container">
     <ul class="sidenav" id="mobile-links">
       <li><a href="#">Home</a></li>
-      <li><a href="#modalAbout" class="modal-trigger">About</a></li>
-      <li><a href="#modalHelp" class="modal-trigger">Help</a></li>
+      <li><a href="#modal-about" class="modal-trigger">About</a></li>
+      <li><a href="#modal-help" class="modal-trigger">Help</a></li>
       <li><a class='dropdown-trigger no-shadow' href='#' data-target='dropdown-phone'>Themes</a></li>
-
     </ul>
   </div>
-<div class="navbar-fixed">
-  <nav class="nav-wrapper" style="background-color: #0FA3B1;" id="nav">
-    <div class="container">
-      <a href="#" class="brand-logo center">Photobook</a>
-      <a href="#" class="sidenav-trigger left" data-target="mobile-links">
-        <i class="material-icons">menu</i>
-      </a>
-      <ul class="left hide-on-med-and-down">
-        <li><a href="#">Home</a></li>
-        <li><a href="#modalAbout" class="modal-trigger">About</a></li>
-        <li><a href="#modalHelp" class="modal-trigger">Help</a></li>
-        <li><a class='dropdown-trigger btn no-shadow' href='#' data-target='dropdown-big'>Themes</a></li>
-      </ul>
-    </div>
-  </nav>
-</div>
-
+  <div class="navbar-fixed">
+    <nav class="nav-wrapper color-secondary" id="nav">
+      <div class="container">
+        <a href="#" class="brand-logo center">Photobook</a>
+        <a href="#" class="sidenav-trigger left" data-target="mobile-links">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+          <li><a href="#">Home</a></li>
+          <li><a href="#modal-about" class="modal-trigger">About</a></li>
+          <li><a href="#modal-help" class="modal-trigger">Help</a></li>
+          <li><a class='dropdown-trigger btn no-shadow' href='#' data-target='dropdown-big'>Themes</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
   <!-- container -->
   <div class="container">
     <div class="center">
       <h2 id="title">Your photobook</h2>
-      <h6 class="botMargin">This is your photobook. This is the place where you can add your favourite photos, give them a personal description and see them all in a collection.</h6>
+      <h6 class="bot-margin">This is your photobook. This is the place where you can add your favourite photos, give them
+        a personal description and see them all in a collection.</h6>
       <!-- hide-on-med-and-down er ikke mobile-first tror jeg, men tænker det kan fikses-->
-      <a id="upload_btn" href="#" class="btn-large botMargin hide-on-med-and-down" style="background-color: #81939D;" onclick="chooseFile()">
+      <a id="upload-button" href="#" class="btn-large bot-margin hide-on-med-and-down color-tertiary" onclick="fileInput.click()">
         <span>Upload photo</span>
         <i class="material-icons right">file_upload</i>
       </a>
     </div>
 
+    <!--Made by: Robert-->
     <!-- Help section (modal)-->
-    <div id="modalHelp" class="modal modal-fixed-footer">
+    <div id="modal-help" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <i class="material-icons left" style="font-size: 50px">help</i>
-        <h3 style="margin-bottom: 40px;">Help Section</h3>
-
+        <i class="material-icons left help-icon">help</i>
+        <h3 class="help-text">Help Section</h3>
         <ul>
-        <i class="material-icons left firstIndent iconFontSize15">add_a_photo</i>
-        <li class="botMargin">
-          <h5>How do I add a photo?</h5>
-        </li>
-        <h6 class="secondIndent botMargin">To add a photo simply press on the upload button, which will open
-           a new window where you can select a given picture you'd like to upload.
-        </h6>
-      </ul>
-
-        <ul>
-          <i class="material-icons left firstIndent iconFontSize15">cached</i>
-          <li class="botMargin">
-            <h5>How do I swap photo?</h5> 
+          <li class="bot-margin">
+            <i class="material-icons left first-indent icon-font-size-15">add_a_photo</i>
+            <h5>How do I add a photo?</h5>
+            <h6 class="second-indent bot-margin">To add a photo simply press on the upload button, which will open
+              a new window where you can select a given picture you'd like to upload.
+            </h6>
           </li>
-          <h6 class="secondIndent botMargin">
-            To swap photos, simply select the picture you'd like to swap, and hold in your cursor on a given picture and drag it over the picture you'd like to swap with.
-          </h6>
-        </ul>
-
-        <ul>
-          <i class="material-icons left firstIndent iconFontSize15">insert_photo</i>
-          <li class="botMargin">
+          <li class="bot-margin">
+            <i class="material-icons left first-indent icon-font-size-15">cached</i>
+            <h5>How do I swap photo?</h5>
+            <h6 class="second-indent bot-margin">
+              To swap photos, simply select the picture you'd like to swap, and hold in your cursor on a given picture
+              and drag it over the picture you'd like to swap with.
+            </h6>
+          </li>
+          <li class="bot-margin">
+            <i class="material-icons left first-indent icon-font-size-15">insert_photo</i>
             <h5>
               How do I preview a photo?
             </h5>
+            <h6 class="second-indent bot-margin">
+              Click on the photo you'd like to preview.
+              To close the preview click on the background or click the cross in the top right corner.
+            </h6>
           </li>
-          <h6 class="secondIndent botMargin">
-            Click on the photo you'd like to preview.
-            To close the preview click on the background or click the cross in the top right corner.
-          </h6>
-        </ul>
-
-        <ul>
-          <i class="material-icons left firstIndent iconFontSize15">edit</i>
-          <li class="botMargin">
+          <li class="bot-margin">
+            <i class="material-icons left first-indent icon-font-size-15">edit</i>
             <h5>
-              How do I edit photo?  
+              How do I edit photo?
             </h5>
+            <h6 class="second-indent bot-margin">
+              To edit a given photo, simply upload a photo and a new pop-up will appear, where there's different kind of
+              buttons to edit your picture with. If happy with the result click "upload", otherwise click "cancel" to
+              cancel.
+            </h6>
           </li>
-          <h6 class="secondIndent botMargin">
-           To edit a given photo, simply upload a photo and a new pop-up will appear, where there's different kind of buttons to edit your picture with. If happy with the result click "upload", otherwise click "cancel" to cancel.
-          </h6>
-        </ul>
-
-        <ul>
-          <i class="material-icons left firstIndent iconFontSize15">color_lens</i>
-          <li class="botMargin">
+          <li class="bot-margin">
+            <i class="material-icons left first-indent icon-font-size-15">color_lens</i>
             <h5>
               How do I change theme?
             </h5>
+            <h6 class="second-indent bot-margin">
+              To change theme find the "Themes" button in the navigation bar, whereafter you have 4 themes to choose
+              from.
+            </h6>
           </li>
-          <h6 class="secondIndent botMargin">          
-              To change theme find the "Themes" button in the navigation bar, whereafter you have 4 themes to choose from.
-          </h6>
         </ul>
-
-      </ul>
       </div>
     </div>
 
-    <!-- Help section (modal)-->
-    <div id="modalAbout" class="modal bottom-sheet">
+    <!-- About section (modal)-->
+    <!--Made by: Robert & Jeppe-->
+    <div id="modal-about" class="modal bottom-sheet">
       <div class="modal-content">
-        <ul>
-          <i class="material-icons right secondIndent iconFontSize15">plus_one</i>
-           <li class="botMargin thickness">This project is made in relation of our exam in the course 'Systematisk design af brugergrænseflader' and is made by: </li>
-           <p class="thirdIndent botMargin">
-            Philip Morten Qwist Bilbo
-          </p>
-          <p class="thirdIndent botMargin">
-            Thomas Dal
-          </p>
-          <p class="thirdIndent botMargin">
-            Oskar Jensen
-          </p>
-          <p class="thirdIndent botMargin">
-            Jeppe Mark Møller
-          </p>
-          <p class="thirdIndent botMargin">
-            Robert Voigt Venningbo
-          </p>
-        </ul>
+        <p class="bot-margin thickness">
+          This project is made in relation of our exam in the course 'Systematisk design af brugergrænseflader' and is
+          made by:
+        </p>
+        <i class="material-icons right second-indent icon-font-size-15">plus_one</i>
+        <p class="third-indent bot-margin">
+          Jeppe Mark Møller
+        </p>
+        <p class="third-indent bot-margin">
+          Oskar Jensen
+        </p>
+        <p class="third-indent bot-margin">
+          Philip Morten Qwist Bilbo
+        </p>
+        <p class="third-indent bot-margin">
+          Robert Voigt Venningbo
+        </p>
+        <p class="third-indent bot-margin">
+          Thomas Dal
+        </p>
       </div>
     </div>
-    
+
+    <!--Made by: Oskar & Jeppe-->
     <!-- image modal -->
-    <div id="modal1" class="modal">
+    <div id="edit-modal" class="modal">
       <div class="modal-content">
         <h4>Edit photo</h4>
-        <div class="container" id="canvasContainer">
+        <div class="container" id="canvas-container">
           <canvas id="C" height="500" width="600"></canvas>
-          <input id="pictureText" type="text" placeholder="Write your caption here.." onsubmit="Addtext()">
-          <div id="canvasButtons" class="center-on-xs-only">
-            <a id="addText_btn" href="#" onclick="Addtext()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Add your caption to the picture">
+          <input id="picture-text" type="text" placeholder="Write your annotation here.." onsubmit="Addtext()">
+          <div id="canvas-buttons" class="center-on-xs-only">
+            <a id="add-text-button" href="#" onclick="Addtext()" class="btn color-tertiary tooltipped bot-margin-small"
+              data-position="bottom" data-tooltip="Add your caption to the picture">
               <span>Add Text</span>
             </a>
-            <a id="drawOnCanvasButton" href="#" onclick="toggleDrawOnCanvas()" class="btn tooltipped"style="background-color: #81939D; margin-bottom: 5px;" data-position="bottom" data-tooltip="Click to toggle the ability to draw" >
+            <a id="draw-on-canvas-button" href="#" onclick="toggleDrawOnCanvas()" class="btn tooltipped bot-margin-small"
+              data-position="bottom"
+              data-tooltip="Click to toggle the ability to draw">
               <i class="material-icons center">brush</i>
             </a>
-            <a id="colorButton" href="#" onclick="colorInput.click()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Change color">
+            <a id="color-button" href="#" onclick="color_input.click()" class="btn color-tertiary tooltipped bot-margin-small"
+              data-position="bottom" data-tooltip="Change color">
               <i class="material-icons center">color_lens</i>
             </a>
-            <a id="filterButton" href="#" class="btn editPhotoButtons tooltipped" onclick="toggleGrayScale()" data-position="bottom" data-tooltip="Toggle black and white">
+            <a id="filter-button" href="#" class="btn color-tertiary tooltipped bot-margin-small" onclick="toggleGrayScale()"
+              data-position="bottom" data-tooltip="Toggle black and white">
               <i id="grayScaleIcon" class="material-icons center">invert_colors</i>
             </a>
-            <a id="undoButton" href="#" onclick="undo()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Undo your most recent change">
+            <a id="undo-button" href="#" onclick="undo()" class="btn color-tertiary tooltipped bot-margin-small" data-position="bottom"
+              data-tooltip="Undo your most recent change">
               <i class="material-icons center">undo</i>
             </a>
-            <a id="redoButton" href="#" onclick="redo()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Redo your changes">
+            <a id="redo-button" href="#" onclick="redo()" class="btn color-tertiary tooltipped bot-margin-small" data-position="bottom"
+              data-tooltip="Redo your changes">
               <i class="material-icons center">redo</i>
             </a>
-            <a id="removeSelectedButton" href="#" onclick="removeObject()" class="btn editPhotoButtons tooltipped" data-position="bottom" data-tooltip="Removes your selected object"> 
+            <a id="remove-selected-button" href="#" onclick="removeObject()" class="btn color-tertiary tooltipped bot-margin-small"
+              data-position="bottom" data-tooltip="Removes your selected object">
               <i class="material-icons center">delete</i>
             </a>
           </div>
@@ -233,67 +216,52 @@
       </div>
       <div class="modal-fixed-footer right">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="uploadePressed()">Upload</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="uploadPressed()">Upload</a>
       </div>
     </div>
 
+    <!--Made by: Robert-->
     <!-- The Modal -->
-    <div id="modalPreview" class="modall">
-      <img  class="modall-content"id="img01">
+    <div id="preview-modal" class="modall">
+      <img class="modall-content" id="img01" src="#" alt="This is an image">
       <span class="close">&times;</span>
-      <h5 class="caption" id="caption"></h5>
-      <h6 class="caption" id="caption1"></h6>
+      <h5 class="caption" id="caption">Placeholder text</h5>
+      <h6 class="caption" id="caption1">Placeholder text</h6>
     </div>
 
-
+    <!--Made by: Thomas-->
     <div class="row" id="table">
       <div class="col s12 m6 l4" id="duplicater0">
         <div class="card medium hoverable" style="background-color: #f7f7f7;">
           <!-- size er meget vigtig eller fucker alt -->
-          <div
-            class="card-image"
-            ondrop="drop(event)"
-            ondragover="allowDrop(event)"
-          >
-            <img
-              class="myImg modal-trigger"
-              id="drag0"
-              draggable="true"
-              ondragstart="drag(event)"
-              href="#modalPreview"
-              onclick="show(event)"
+          <div class="card-image" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img class="my-img" id="drag0" draggable="true" ondragstart="drag(event)" onclick="show(event)"
               src="https://i0.wp.com/crochetbysippe.dk/wp-content/uploads/2018/10/placeholder-01.jpg?resize=300%2C169&ssl=1"
-              alt=""
-            />
+              alt="This is an image" />
           </div>
-          <div class="card-content" id="text-div" name="text-div">
-            <input class="card-title" id="pic-title" placeholder="Title"></input>
+          <div class="card-content" id="text-div">
+            <input class="card-title" id="pic-title" placeholder="Title" />
             <div>
-              <textarea class="noborder materialize-textarea" 
-              placeholder="Description" 
-              cols="35"
-              rows="2"
-              id="imageDesc"
-              ></textarea>  
+              <textarea class="no-border materialize-textarea" placeholder="Description" cols="35" rows="2"
+                id="imageDesc"></textarea>
+            </div>
           </div>
-          </div>
-          <a href="#" class="deletebtn">
-            <i id="trashCan0" onclick="removeCard(event)" class="material-icons trashCanClass">delete</i>
+          <a href="#" class="delete-button">
+            <i id="trashCan0" onclick="removeCard(event)" class="material-icons trash-can">delete</i>
           </a>
         </div>
       </div>
     </div>
   </div>
+  <div class="fixed-action-btn right hide-on-large-only">
+    <a href="#" class="btn-floating btn-large color-tertiary" id="plus-button" onclick="chooseFile()">
+      <i class="material-icons">add</i>
+    </a>
+  </div>
 
   <!--JavaScript at end of body for optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.3/fabric.min.js"></script>
-  <script type="text/javascript" src="js/bin/materialize.min.js"></script>
-  <script type="text/javascript" src="js/javascript.js"></script>
-  <script type="text/javascript" src="js/api.js"></script>
-  <div class="fixed-action-btn right hide-on-large-only">
-    <a href="#" class="btn-floating btn-large" id="plusbtn"  style="background-color: #81939D" onclick="chooseFile()">
-    <i class="material-icons">add</i>
-    </a>
-  </div>
+  <script src="js/bin/materialize.min.js"></script>
+  <script src="js/javascript.js"></script>
 </body>
 </html>

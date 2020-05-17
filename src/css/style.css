@@ -1,31 +1,31 @@
-
+/*Made by: Jeppe*/
 
 .no-shadow {
     box-shadow: none!important;
     background-color: transparent!important;
 }
 
-.noborder {
+.no-border {
     border:none!important;
 }
 
-.firstIndent{
+.first-indent{
     margin-left: 10px;
 }
 
-.secondIndent{
+.second-indent{
     margin-left: 42px;
 }
 
-.thirdIndent{
+.third-indent{
     margin-left: 71px;
 }
 
-.botMargin{
+.bot-margin{
     margin-bottom: 20px;
 }
 
-.iconFontSize15{
+.icon-font-size-15{
     font-size: 17px!important;
 }
 
@@ -33,26 +33,33 @@
     font-weight: bold;
 }
 
-.editPhotoButtons{
+.color-tertiary{
     background-color: #81939D!important;
+}
+
+.bot-margin-small{
     margin-bottom: 5px;
 }
 
-#addText_btn{
+#add-text-button{
     width: 104px!important;
 }
 
 @media only screen and (min-width: 581px){
-    #addText_btn{
+    #add-text-button{
         width: 105px!important;
     }
 }
 
 @media only screen and (min-width: 992px){
-    #addText_btn{
+    #add-text-button{
         width: 106px!important;
     }
 }
+
+
+
+/*Made by: Oskar*/
 
 .center-on-xs-only {
     text-align: center;
@@ -64,16 +71,16 @@
     }
 }
 
-.myImg:hover {opacity: 0.7;}
+.my-img:hover {opacity: 0.7;}
 
     Style the Image Used to Trigger the Modal
-    #myImg {
+    #my-img {
         border-radius: 5px;
         cursor: pointer;
         transition: 0.3s;
     }
     
-    #myImg:hover {opacity: 0.7;}
+    #my-img:hover {opacity: 0.7;}
     
     /* The Modal (background) */
     .modall {
@@ -98,6 +105,10 @@
         max-width: 700px;
     }
     
+
+
+    /*Made by: Philip*/
+
     /* Caption of Modal Image (Image Text) - Same Width as the Image */
     #caption {
         margin: auto;
@@ -146,17 +157,17 @@
         }
     }
 
-
+    /*Made by: Robert*/
 
 
     /* Style the Image Used to Trigger the Modal */
-#myImg {
+#my-img {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
   }
   
-  #myImg:hover {opacity: 0.7;}
+  #my-img:hover {opacity: 0.7;}
   
   /* The Modal (background) */
   .modall {
@@ -199,16 +210,19 @@
     }
   }
 
+
+   /*Made by: Thomas*/
+
 .cont {
     position: relative;
 }
 
-.cardimg {
+.card-image {
     width:100;
     height: auto;
 }
 
-.deletebtn {
+.delete-button {
     position: absolute;
     color: black;
     border: lightgrey;
@@ -232,12 +246,12 @@
     cursor: pointer;
   }
 
-  .trashCanClass{
+  .trash-can{
       color: #81939D;
       opacity: 0.6;
   }
 
-  .trashCanClass:hover{
+  .trash-can:hover{
       opacity: 0.9;
   }
 
@@ -250,4 +264,25 @@
     color: #ccc;
     padding: 10px 0;
     height: 50px !important;
+  }
+
+  body{
+    background-color: #F4EDEA;
+  }
+
+  .hidden{
+    height: 0px; 
+    overflow: hidden;
+  }
+
+  .color-secondary{
+      background-color: #0FA3B1;
+  }
+
+  .help-icon{
+    font-size: 50px!important;
+  }
+
+  .help-text{
+      margin-bottom: 40px;
   }
